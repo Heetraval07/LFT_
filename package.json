@@ -1,0 +1,22 @@
+{
+  "name": "lft-interior-design",
+  "version": "1.0.0",
+  "description": "Website for LFT Interior Design LLC, Dubai (Vite, plain HTML/CSS/JS)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "screenshots": "node scripts/screenshots.mjs",
+    "test": "node scripts/interactions.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "bootstrap-icons": "^1.11.3",
+    "playwright": "^1.48.2",
+    "vite": "^5.4.10"
+  },
+  "private": true
+}

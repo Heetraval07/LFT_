@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#2a2520">
+  <style>html{background:#2a2520;color-scheme:dark}body{margin:0}.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}</style>
+  <title>LFT Interior Design — Interior Design in Dubai</title>
+  <meta name="description" content="LFT Interior Design LLC is an interior design firm established in 2019, creating residential and commercial interiors that balance functionality, comfort and aesthetics.">
+  <link rel="icon" href="/images/logo/lft-logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;500;600&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/styles.css">
+  <!-- first hero image: start downloading it immediately (keep in sync with the first entry of heroSlides) -->
+  <link rel="preload" as="image" href="/images/1571460.jpg" fetchpriority="high">
+</head>
+<body data-page="home" class="has-dark-hero" id="top">
+  <main>
+    <!-- 1. Hero banner -->
+    <section class="hero" id="hero">
+      <div class="hero-slides"></div>
+      <h1 class="visually-hidden">LFT Interior Design</h1>
+    </section>
+
+    <!-- 2. Recent projects (rendered from src/data.js) -->
+    <section class="recent" id="recent-projects" aria-labelledby="recent-title">
+      <h2 id="recent-title" class="visually-hidden">Recent projects</h2>
+      <div class="recent-grid" id="home-projects"></div>
+    </section>
+
+    <!-- 3. Partners marquee (rendered from `partners` in src/data.js) -->
+    <section class="partners" id="partners" aria-label="Our partners and clients">
+      <p class="partners-label" data-reveal>Our partners & clients</p>
+      <div class="partners-marquee" id="home-partners" data-reveal></div>
+    </section>
+  </main>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
