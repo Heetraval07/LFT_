@@ -6,6 +6,11 @@ const htmlPages = ['about', 'services', 'projects', 'project', 'contact', 'terms
 const nextConfig: NextConfig = {
   output: 'standalone', // Hostinger starts Next.js's standalone server
   poweredByHeader: false,
+  // Optional: comma-separated hostnames (e.g. "www.example.com,example.com") allowed to submit admin forms when a
+  // proxy changes the Host header. Leave unset normally.
+  experimental: {
+    serverActions: { allowedOrigins: (process.env.ALLOWED_ORIGINS || '').split(',').map((s) => s.trim()).filter(Boolean) },
+  },
   serverExternalPackages: ['@prisma/client', '@prisma/adapter-mariadb', 'mariadb'],
   async rewrites() {
     return [

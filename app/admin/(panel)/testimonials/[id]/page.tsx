@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import TestimonialForm from '../../../_ui/TestimonialForm';
 import { db } from '../../../../../lib/db.ts';
-import { uploadsEnabled } from '../../../../../lib/storage.ts';
+import { uploadAvailability } from '../../../../../lib/storage.ts';
 
 export const metadata: Metadata = { title: 'Edit testimonial' };
 
@@ -19,7 +19,7 @@ export default async function EditTestimonial({ params, searchParams }: { params
       <div className="a-head"><h1>Edit Testimonial</h1></div>
       <TestimonialForm
         key={`${t.id}-${saved ?? ''}`}
-        uploadsReady={uploadsEnabled()}
+        uploads={await uploadAvailability()}
         saved={saved && ['published', 'saved as a draft'].includes(saved) ? saved : undefined}
         initial={{
           id: t.id, clientName: t.clientName, designation: t.designation ?? '', company: t.company ?? '', text: t.text,

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { requireAdmin } from '../../../lib/auth.ts';
 import { logoutAction } from '../actions';
 import Nav from '../_ui/Nav';
+import { appEnv, databaseName } from '../../../lib/env-info.ts';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,6 +27,7 @@ export default async function PanelLayout({ children }: { children: ReactNode })
         </nav>
         <div className="a-side-foot">
           <span>Signed in as<br /><b style={{ color: '#ddd' }}>{admin.name}</b></span>
+          <span title={`Database: ${databaseName()}`}>Environment: <b className={`a-env is-${appEnv() === 'production' ? 'prod' : 'other'}`}>{appEnv()}</b></span>
           <a href="/" target="_blank" rel="noopener">View website ↗</a>
         </div>
       </aside>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import ProjectForm from '../../../_ui/ProjectForm';
 import { categoriesForForm, projectForForm } from '../load';
-import { uploadsEnabled } from '../../../../../lib/storage.ts';
+import { uploadAvailability } from '../../../../../lib/storage.ts';
 
 export const metadata: Metadata = { title: 'Edit project' };
 
@@ -17,7 +17,7 @@ export default async function EditProject({ params, searchParams }: { params: Pr
     <>
       <div className="a-crumb"><Link href="/admin/projects">Projects</Link> / {project.name}</div>
       <div className="a-head"><h1>Edit Project</h1></div>
-      <ProjectForm key={`${project.id}-${saved ?? ''}`} initial={project} categories={categories} uploadsReady={uploadsEnabled()} saved={saved && ['published', 'saved as a draft'].includes(saved) ? saved : undefined} />
+      <ProjectForm key={`${project.id}-${saved ?? ''}`} initial={project} categories={categories} uploads={await uploadAvailability()} saved={saved && ['published', 'saved as a draft'].includes(saved) ? saved : undefined} />
     </>
   );
 }

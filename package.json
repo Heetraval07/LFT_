@@ -13,7 +13,11 @@
     "screenshots": "node scripts/screenshots.mjs",
     "test": "node scripts/interactions.mjs",
     "build:hostinger": "prisma generate && node scripts/deploy-tasks.ts && next build",
-    "test:smtp": "node scripts/test-smtp.mjs"
+    "test:smtp": "node scripts/test-smtp.mjs",
+    "content:export": "node scripts/export-content.ts",
+    "content:import": "node scripts/import-content.ts",
+    "check:env": "node scripts/check-env.ts",
+    "storage:check": "node scripts/storage-check.ts"
   },
   "keywords": [],
   "author": "",

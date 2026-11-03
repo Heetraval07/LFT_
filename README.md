@@ -32,10 +32,10 @@ To try the contact form without a real mailbox, run `node scripts/fake-smtp.mjs`
 | `app/(home)`, `app/(about)/about`, … | Public pages (one route per original page; old `*.html` URLs are rewritten to them) |
 | `app/_components/` | Shared `<html>` shell and the component that starts the site scripts |
 | `site/` | Original site scripts + `styles.css` (header, footer, pages, animations) |
-| `app/admin/` | Admin dashboard (login, dashboard, projects, categories, testimonials, photo-storage check) |
+| `app/admin/` | Admin dashboard (login, dashboard, projects, categories, testimonials, photo uploads) |
 | `app/admin/actions.ts` | All admin write operations (each checks the session first) |
 | `app/api/contact/route.ts` | Contact form endpoint (validation, spam trap, rate limit, SMTP) |
-| `lib/` | Database client, auth/sessions, validation, public queries, mail, file housekeeping |
+| `lib/` | Database client, auth/sessions, validation, public queries, mail, photo storage + image checks |
 | `prisma/` | Schema, migrations, seed (`seed-data.json` = the original content) |
 | `public/images/` | Bundled images, including the 76 original project photos |
 | `scripts/` | Admin CLI, deploy tasks, fake SMTP server and the Playwright test suites |
@@ -49,5 +49,7 @@ With the dev server (or a production build) running, each `scripts/*-check.mjs` 
 
 ## Deployment
 
-See **[DEPLOYMENT.md](DEPLOYMENT.md)** (Hostinger database, environment variables, first admin, SMTP, photo storage
-verification, backups and restore).
+Two stages — our own Hostinger server first (staging), then the client's account (production) with **no code
+changes**: everything server-specific comes from environment variables (see `.env.example`), and the two servers use
+separate databases. Content moves between them with `npm run content:export` / `content:import`.
+Full steps, checks, backups and restore: **[DEPLOYMENT.md](DEPLOYMENT.md)**.

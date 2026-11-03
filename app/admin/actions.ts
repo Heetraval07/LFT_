@@ -6,7 +6,7 @@ import { revalidatePath } from 'next/cache';
 import { db } from '../../lib/db.ts';
 import { login, logout, requireAdmin } from '../../lib/auth.ts';
 import { projectSchema, testimonialSchema, categorySchema, firstError, slugify, slugSchema } from '../../lib/validation.ts';
-import { deleteFilesIfUnreferenced } from '../../lib/storage.ts';
+import { deleteFilesIfUnreferenced, uploadExists } from '../../lib/storage.ts';
 
 export type FormState = { error?: string; ok?: string; email?: string } | undefined;
 
@@ -47,7 +47,7 @@ async function uniqueSlug(wanted: string, excludeId?: number) {
   }
 }
 
-type ImageEdit = { id: number; alt?: string };
+type ImageEdit = { key: string; id?: number; path?: string; width?: number | null; height?: number | null; alt?: string };
 
 export async function saveProject(_: FormState, f: FormData): Promise<FormState> {
   await requireAdmin();
@@ -62,13 +62,21 @@ export async function saveProject(_: FormState, f: FormData): Promise<FormState>
   if (!parsed.success) return { error: firstError(parsed.error) };
   const v = parsed.data;
 
-  // Photo order / cover / removals from the image manager (ids refer to existing ProjectImage rows of THIS project).
+  // Photo list from the image manager, in display order. Each entry is either an existing photo of THIS project
+  // ({ id }) or a photo that was just uploaded ({ path, width, height }). `coverKey` says which one is the cover.
   let images: ImageEdit[] = [];
-  let coverId = Number(str(f, 'coverImageId')) || null;
+  let coverKey = str(f, 'coverKey');
   try {
     const raw = JSON.parse(str(f, 'images') || '[]');
     if (!Array.isArray(raw)) throw new Error();
-    images = raw.slice(0, 500).map((x) => ({ id: Number(x.id), alt: typeof x.alt === 'string' ? x.alt.trim().slice(0, 300) : undefined })).filter((x) => Number.isInteger(x.id) && x.id > 0);
+    const seen = new Set<string>();
+    for (const x of raw.slice(0, 500)) {
+      const alt = typeof x.alt === 'string' ? x.alt.trim().slice(0, 300) : undefined;
+      let item: ImageEdit | null = null;
+      if (Number.isInteger(Number(x.id)) && Number(x.id) > 0) item = { key: `id:${Number(x.id)}`, id: Number(x.id), alt };
+      else if (typeof x.path === 'string') item = { key: `path:${x.path}`, path: x.path, width: Number(x.width) > 0 ? Number(x.width) : null, height: Number(x.height) > 0 ? Number(x.height) : null, alt };
+      if (item && !seen.has(item.key)) { seen.add(item.key); images.push(item); }
+    }
   } catch {
     return { error: 'The photo list could not be read. Please reload the page and try again.' };
   }
@@ -76,9 +84,11 @@ export async function saveProject(_: FormState, f: FormData): Promise<FormState>
   const current = id ? await db.project.findUnique({ where: { id }, include: { images: true } }) : null;
   if (id && !current) return { error: 'This project no longer exists.' };
   const ownIds = new Set(current?.images.map((i) => i.id) ?? []);
-  images = images.filter((i) => ownIds.has(i.id));
-  if (coverId && !images.some((i) => i.id === coverId)) coverId = images[0]?.id ?? null;
-  if (!coverId) coverId = images[0]?.id ?? null;
+  images = images.filter((i) => (i.id ? ownIds.has(i.id) : Boolean(i.path)));
+  for (const i of images) {
+    if (i.path && !(await uploadExists(i.path))) return { error: 'One of the newly uploaded photos is no longer on the server. Please remove it and upload it again.' };
+  }
+  if (!images.some((i) => i.key === coverKey)) coverKey = images[0]?.key ?? '';
 
   const isPublished = intent === 'publish' ? true : intent === 'draft' ? false : Boolean(current?.isPublished);
   if (isPublished && images.length === 0) return { error: 'Add at least one photo before publishing. You can save it as a draft for now.' };
@@ -97,17 +107,20 @@ export async function saveProject(_: FormState, f: FormData): Promise<FormState>
     sortOrder: v.sortOrder, isPublished,
   };
 
-  const removedPaths = current ? current.images.filter((i) => !images.some((k) => k.id === i.id)).map((i) => i.path) : [];
+  const keptIds = images.filter((i) => i.id).map((i) => i.id!);
+  const removedPaths = current ? current.images.filter((i) => !keptIds.includes(i.id)).map((i) => i.path) : [];
   const saved = await db.$transaction(async (tx) => {
     const p = id
       ? await tx.project.update({ where: { id }, data })
       : await tx.project.create({ data });
     await tx.projectCategory.deleteMany({ where: { projectId: p.id } });
     if (categoryRows.length) await tx.projectCategory.createMany({ data: categoryRows.map((c) => ({ ...c, projectId: p.id })) });
-    if (current) {
-      await tx.projectImage.deleteMany({ where: { projectId: p.id, id: { notIn: images.map((i) => i.id) } } });
-      for (const [k, img] of images.entries()) {
-        await tx.projectImage.update({ where: { id: img.id }, data: { sortOrder: k, isCover: img.id === coverId, ...(img.alt !== undefined ? { alt: img.alt || null } : {}) } });
+    if (current) await tx.projectImage.deleteMany({ where: { projectId: p.id, id: { notIn: keptIds } } });
+    for (const [k, img] of images.entries()) {
+      if (img.id) {
+        await tx.projectImage.update({ where: { id: img.id }, data: { sortOrder: k, isCover: img.key === coverKey, ...(img.alt !== undefined ? { alt: img.alt || null } : {}) } });
+      } else {
+        await tx.projectImage.create({ data: { projectId: p.id, path: img.path!, width: img.width ?? null, height: img.height ?? null, alt: img.alt || null, sortOrder: k, isCover: img.key === coverKey } });
       }
     }
     return p;
@@ -198,13 +211,18 @@ export async function saveTestimonial(_: FormState, f: FormData): Promise<FormSt
   const isPublished = intent === 'publish' ? true : intent === 'draft' ? false : Boolean(current?.isPublished);
   const removePhoto = bool(f, 'removePhoto');
   const removeLogo = bool(f, 'removeLogo');
+  const newPhoto = str(f, 'newPhotoPath');
+  const newLogo = str(f, 'newLogoPath');
+  for (const [p, label] of [[newPhoto, 'photo'], [newLogo, 'logo']] as const) {
+    if (p && !(await uploadExists(p))) return { error: `The uploaded ${label} is no longer on the server. Please upload it again.` };
+  }
   const data = {
     ...parsed.data, isPublished,
-    ...(removePhoto ? { photoPath: null } : {}),
-    ...(removeLogo ? { logoPath: null } : {}),
+    ...(newPhoto ? { photoPath: newPhoto } : removePhoto ? { photoPath: null } : {}),
+    ...(newLogo ? { logoPath: newLogo } : removeLogo ? { logoPath: null } : {}),
   };
   const saved = id ? await db.testimonial.update({ where: { id }, data }) : await db.testimonial.create({ data });
-  await deleteFilesIfUnreferenced([removePhoto ? current?.photoPath : null, removeLogo ? current?.logoPath : null]);
+  await deleteFilesIfUnreferenced([removePhoto || newPhoto ? current?.photoPath : null, removeLogo || newLogo ? current?.logoPath : null]);
   refreshPublicSite();
   revalidatePath('/admin', 'layout');
   redirect(`/admin/testimonials/${saved.id}?saved=${encodeURIComponent(isPublished ? 'published' : 'saved as a draft')}`);

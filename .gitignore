@@ -45,3 +45,6 @@ desktop.ini
 next-env.d.ts
 
 *.tsbuildinfo
+
+# exported content snapshots (contain business content; keep out of git)
+content-export*.json

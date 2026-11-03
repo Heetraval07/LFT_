@@ -4,6 +4,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
 import { sendEnquiry, smtpConfigured } from '../../../lib/mail.ts';
+import { brand } from '../../../site/data.js';
 
 export const dynamic = 'force-dynamic';
 
@@ -68,17 +69,17 @@ export async function POST(req: NextRequest) {
   if (seen && Date.now() - seen < WINDOW) return NextResponse.json({ ok: true, duplicate: true });
 
   // Only messages that would really be emailed count towards the limit (typos and rejected forms don't).
-  if (rateLimited(ip)) return fail(429, 'You have sent several messages in a short time. Please wait a few minutes, or call us on 04 282 9773.');
+  if (rateLimited(ip)) return fail(429, `You have sent several messages in a short time. Please wait a few minutes, or call us on ${brand.phone}.`);
 
   if (!smtpConfigured()) {
     console.error('[contact] SMTP is not configured (SMTP_HOST / SMTP_USER / SMTP_PASSWORD / CONTACT_RECEIVER_EMAIL).');
-    return fail(503, 'Sorry, our contact form is temporarily unavailable. Please email info@lftinteriors.com or call 04 282 9773.');
+    return fail(503, `Sorry, our contact form is temporarily unavailable. Please email ${brand.email} or call ${brand.phone}.`);
   }
   try {
     await sendEnquiry({ name: d.name, email: d.email, phone: d.phone, message: d.message, ip });
   } catch (err) {
     console.error('[contact] SMTP send failed:', (err as Error)?.message);
-    return fail(502, 'Sorry, your message could not be sent. Please try again, or email info@lftinteriors.com or call 04 282 9773.');
+    return fail(502, `Sorry, your message could not be sent. Please try again, or email ${brand.email} or call ${brand.phone}.`);
   }
   recent.set(key, Date.now());
   if (recent.size > 5000) for (const [k, t] of recent) if (Date.now() - t > WINDOW) recent.delete(k);
