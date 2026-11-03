@@ -12,7 +12,7 @@ const check = (n, ok, x = '') => { res.push(ok); console.log(`${ok ? 'PASS' : 'F
 async function earlyState(url, { delayJs = 2500, delayCss = 0 } = {}) {
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });
   const p = await ctx.newPage();
-  await p.route(/\/(src\/.*\.js|@vite\/client|node_modules\/.*|assets\/.*\.js)(\?.*)?$/, async (r) => { await new Promise((x) => setTimeout(x, delayJs)); r.continue(); });
+  await p.route(/\/(src\/.*\.js|@vite\/client|node_modules\/.*|assets\/.*\.js|_next\/static\/.*\.js)(\?.*)?$/, async (r) => { await new Promise((x) => setTimeout(x, delayJs)); r.continue(); });
   if (delayCss) await p.route(/\.css(\?.*)?$/, async (r) => { await new Promise((x) => setTimeout(x, delayCss)); r.continue(); });
   await p.goto(base + url, { waitUntil: 'commit' });
   await p.waitForTimeout(900);

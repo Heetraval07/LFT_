@@ -2,8 +2,15 @@
 // slider, previous/next/all navigation, related projects, lightbox, dark styling and responsive layout.
 import { chromium } from 'playwright';
 const base = process.env.BASE_URL || 'http://localhost:5173';
-const { projects } = await import('../src/data.js');
 const b = await chromium.launch();
+// Projects now come from the database: read the list the site itself was given.
+const projects = await (async () => {
+  const q = await b.newPage();
+  await q.goto(base + '/projects.html', { waitUntil: 'networkidle' });
+  const list = await q.evaluate(() => window.__LFT_DATA__.projects);
+  await q.close();
+  return list;
+})();
 const res = [];
 const check = (n, ok, x = '') => { res.push(ok); console.log(`${ok ? 'PASS' : 'FAIL'} ${n} ${x}`); };
 const errs = [];
@@ -80,7 +87,7 @@ check('previous arrow goes back', (await p.textContent('.pd-banner h1')) === 'Do
 const rel = await p.$eval('.pd-card', (a) => a.getAttribute('href'));
 await p.click('.pd-card'); await p.waitForURL(new RegExp(rel.replace(/[?.]/g, '\\$&'))); await p.waitForSelector('.pd-slider');
 check(`related project card opens ${rel}`, p.url().endsWith(rel));
-await p.click('.pd-grid-link'); await p.waitForURL(/projects\.html$/);
+await p.click('.pd-grid-link'); await p.waitForURL(/projects\.html$/); await p.waitForSelector('.pj-item');
 check('grid icon opens all projects', (await p.$$('.pj-item')).length === projects.length);
 // every project tile on the listing opens its own page in the new template
 let tilesOk = true;

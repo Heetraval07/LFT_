@@ -1,0 +1,138 @@
+// LFT Interior Design — database schema (MariaDB via Prisma's MySQL provider).
+// Images are stored on disk; the database only stores their paths.
+
+generator client {
+  provider     = "prisma-client"
+  output       = "../generated/prisma"
+  moduleFormat        = "esm"
+  importFileExtension = "ts"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+// ---------- Projects ----------
+
+model Category {
+  id        Int               @id @default(autoincrement())
+  name      String            @unique @db.VarChar(80)
+  slug      String            @unique @db.VarChar(100)
+  sortOrder Int               @default(0)
+  projects  ProjectCategory[]
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  @@index([sortOrder])
+}
+
+model Project {
+  id               Int               @id @default(autoincrement())
+  name             String            @db.VarChar(160)
+  slug             String            @unique @db.VarChar(180)
+  client           String?           @db.VarChar(120)
+  shortDescription String            @db.Text
+  description      String            @db.Text // full description; blank lines separate paragraphs
+  location         String            @db.VarChar(200)
+  type             String?           @db.VarChar(120) // project type, shown as "Concept"
+  designVision     String?           @db.Text
+  keyDetails       Json? // list of short strings ("Key Elements of the Design Concept")
+  isFeatured       Boolean           @default(false) // shown in the homepage projects section
+  homeOrder        Int               @default(0) // order among featured projects on the homepage
+  isPublished      Boolean           @default(false)
+  sortOrder        Int               @default(0)
+  images           ProjectImage[]
+  categories       ProjectCategory[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  @@index([isPublished, sortOrder])
+  @@index([isFeatured, isPublished, sortOrder])
+}
+
+// A project can appear under several filter categories; the lowest `position` is its main category.
+model ProjectCategory {
+  projectId  Int
+  categoryId Int
+  position   Int      @default(0)
+  project    Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, categoryId])
+  @@index([categoryId])
+}
+
+model ProjectImage {
+  id        Int      @id @default(autoincrement())
+  projectId Int
+  project   Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  path      String   @db.VarChar(500) // "/images/projects/..." (bundled) or "/uploads/..." (admin uploads)
+  alt       String?  @db.VarChar(300)
+  width     Int?
+  height    Int?
+  sortOrder Int      @default(0)
+  isCover   Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([projectId, sortOrder])
+  @@index([path(length: 191)])
+}
+
+// ---------- Testimonials ----------
+
+model Testimonial {
+  id          Int      @id @default(autoincrement())
+  clientName  String   @db.VarChar(120)
+  designation String?  @db.VarChar(120)
+  company     String?  @db.VarChar(160)
+  text        String   @db.Text
+  photoPath   String?  @db.VarChar(500)
+  logoPath    String?  @db.VarChar(500)
+  rating      Int?     @db.TinyInt // 1-5, optional
+  isFeatured  Boolean  @default(false)
+  isPublished Boolean  @default(false)
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([isPublished, isFeatured, sortOrder])
+}
+
+// ---------- Admin access ----------
+
+model AdminUser {
+  id           Int       @id @default(autoincrement())
+  email        String    @unique @db.VarChar(191)
+  name         String    @db.VarChar(120)
+  passwordHash String    @db.VarChar(255)
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  sessions     Session[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+}
+
+// Only a SHA-256 hash of the session token is stored; the token itself lives in an HTTP-only cookie.
+model Session {
+  id         Int       @id @default(autoincrement())
+  tokenHash  String    @unique @db.Char(64)
+  userId     Int
+  user       AdminUser @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt  DateTime
+  lastSeenAt DateTime  @default(now())
+  userAgent  String?   @db.VarChar(255)
+  createdAt  DateTime  @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+// Failed/successful login attempts, used to slow down password guessing (kept in the DB so it survives restarts).
+model LoginAttempt {
+  id        Int      @id @default(autoincrement())
+  key       String   @db.VarChar(191) // "ip:<address>" or "email:<address>"
+  success   Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([key, createdAt])
+}

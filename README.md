@@ -1,81 +1,53 @@
-# LFT Interior Design — website
+# LFT Interior Design — website + admin
 
-Website for **LFT Interior Design LLC** (Ithraa Tower, Al Garhoud, Dubai, UAE). A multi-page static site built with
-[Vite](https://vitejs.dev) and plain HTML, CSS and JavaScript (no framework).
+Website and content dashboard for **LFT Interior Design LLC** (Ithraa Tower, Al Garhoud, Dubai).
 
-## Run it
+- **Next.js 16** (App Router) serves the public pages and the `/admin` dashboard.
+- **MariaDB** via **Prisma 7** stores projects, project photos (paths), categories, testimonials and admin accounts.
+- **Nodemailer (SMTP)** delivers contact-form enquiries.
+- The public design is the original site: its markup, `site/styles.css` and browser scripts (`site/*.js`) are reused
+  unchanged; the server now hands them the published content from the database (`window.__LFT_DATA__`).
+
+## Local setup
 
 ```bash
 npm install
-npm run dev          # http://localhost:5173
-npm run build        # production build in dist/
-npm run preview      # serve the production build (http://localhost:4173)
+cp .env.example .env            # then fill in DATABASE_URL (local MariaDB) — see below
+npx prisma migrate deploy       # create the tables
+npm run db:seed                 # load the original 8 projects + 76 photos (safe to re-run)
+npm run admin:create -- --email you@example.com --name "Your Name"
+npm run dev                     # http://localhost:5173  (admin: http://localhost:5173/admin)
 ```
 
-## Pages
+Local MariaDB (Windows): `winget install MariaDB.Server`, then create a database and user, e.g.
+`CREATE DATABASE lft_dev; CREATE USER 'lft_app'@'localhost' IDENTIFIED BY '…'; GRANT ALL ON lft_dev.* TO 'lft_app'@'localhost';`
 
-| URL | What's on it |
+To try the contact form without a real mailbox, run `node scripts/fake-smtp.mjs` and point the SMTP variables at
+`127.0.0.1:2525` (messages are saved to `screenshots/mail/`).
+
+## Project layout
+
+| Path | What |
 | --- | --- |
-| `/` | Five-image hero slideshow (3s crossfade), recent projects gallery, partners marquee |
-| `/about.html` | About LFT, who we are, capabilities, clients & partners, authorities, services, brand statement, clients, map, testimonials |
-| `/services.html` | Nine services, authorities block, FAQ accordion, highlights slider |
-| `/projects.html` | Filterable, paginated project gallery (`?category=Commercial`, `?page=2`, `?q=` search) |
-| `/project.html?p=<slug>` | Project detail with gallery lightbox and next/previous links |
-| `/contact.html` | Google map, contact details, validated enquiry form |
-| `/terms.html`, `/privacy.html` | Legal pages (generic templates — have them reviewed before launch) |
+| `app/(home)`, `app/(about)/about`, … | Public pages (one route per original page; old `*.html` URLs are rewritten to them) |
+| `app/_components/` | Shared `<html>` shell and the component that starts the site scripts |
+| `site/` | Original site scripts + `styles.css` (header, footer, pages, animations) |
+| `app/admin/` | Admin dashboard (login, dashboard, projects, categories, testimonials, photo-storage check) |
+| `app/admin/actions.ts` | All admin write operations (each checks the session first) |
+| `app/api/contact/route.ts` | Contact form endpoint (validation, spam trap, rate limit, SMTP) |
+| `lib/` | Database client, auth/sessions, validation, public queries, mail, file housekeeping |
+| `prisma/` | Schema, migrations, seed (`seed-data.json` = the original content) |
+| `public/images/` | Bundled images, including the 76 original project photos |
+| `scripts/` | Admin CLI, deploy tasks, fake SMTP server and the Playwright test suites |
 
-The navbar, footer, animated divider lines and floating UP button are shared by every page.
+## Tests
 
-## Where to edit things
+With the dev server (or a production build) running, each `scripts/*-check.mjs` drives the site in a real browser:
+`admin-check` (dashboard end-to-end), `contact-check` (SMTP flow), `project-detail-check`, `projects-check`,
+`about-check`, `services-check`, `home-check`, `header-check`, `footer-check`, `hero-check`, `polish-check`,
+`fouc-check`, `nav-check`, `logo-align-check`, `cleanup-check`, `interactions`. Set `BASE_URL` to test another server.
 
-| What | Where |
-| --- | --- |
-| Company name, address, phone, email, social links, footer mission | `src/data.js` (`brand`) |
-| Hero slideshow images and interval | `src/data.js` (`heroSlides`, `HERO_INTERVAL_MS`) |
-| Projects (titles, photos, text) | `src/data.js` (`projects`); filter tabs and which tab each project belongs to: `src/projects-data.js` |
-| About page content | `src/about-data.js` |
-| Services page content and FAQ | `src/services-data.js` |
-| Partners marquee logos | `src/data.js` (`partners`) |
-| Colours, fonts, spacing | CSS variables and sections in `src/styles.css` |
-| Images | `public/images/` (named by Pexels photo ID); logo files in `public/images/logo/` |
+## Deployment
 
-### Enquiry form delivery
-
-The Contact form needs somewhere to send messages. Put a form-service URL (for example a Formspree form that delivers to
-`info@lftinteriors.com`) in the `form-endpoint` tag in `contact.html`:
-
-```html
-<meta name="form-endpoint" content="https://formspree.io/f/your-form-id">
-```
-
-While that tag is empty, the form opens the visitor's email app with the message filled in instead. It never shows a
-"sent" message unless a message was really delivered.
-
-## Placeholders to replace before launch
-
-- Social media links point to each platform's home page, not LFT's profiles.
-- Partner, client and authority logos are neutral placeholders, not real organisations.
-- Sample testimonials, the project names/photos and the nine-service list are demonstration content.
-- Terms and Privacy pages are generic templates.
-
-## Checks
-
-With the dev server running (`npm run dev`), the scripts in `scripts/` drive the site in a real browser (Playwright):
-
-```bash
-npx playwright install chromium     # one-time
-node scripts/hero-check.mjs         # hero slideshow: 5 images, 3s interval, crossfade
-node scripts/fouc-check.mjs         # no flash of unstyled content
-node scripts/nav-check.mjs          # refresh, logo and navbar navigation
-node scripts/logo-align-check.mjs   # navbar/footer logo alignment at 17 widths
-node scripts/polish-check.mjs       # logo sizing, social icons, hover/reveal effects, reduced motion
-node scripts/about-check.mjs  node scripts/services-check.mjs  node scripts/projects-check.mjs  node scripts/contact-check.mjs
-node scripts/home-check.mjs   node scripts/header-check.mjs    node scripts/footer-check.mjs   node scripts/cleanup-check.mjs
-npm test                            # interaction smoke test
-npm run screenshots                 # full-page desktop + mobile screenshots into screenshots/ (git-ignored)
-```
-
-## Credits
-
-Photography from [Pexels](https://www.pexels.com) (free to use under the Pexels License). Icons from
-[Bootstrap Icons](https://icons.getbootstrap.com) (MIT).
+See **[DEPLOYMENT.md](DEPLOYMENT.md)** (Hostinger database, environment variables, first admin, SMTP, photo storage
+verification, backups and restore).

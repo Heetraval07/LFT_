@@ -1,5 +1,7 @@
 // Verifies the About Us page: structure, content, placeholders, links, slider, map and responsiveness.
 import { chromium } from 'playwright';
+import 'dotenv/config';
+import { db } from '../lib/db.ts';
 const base = process.env.BASE_URL || 'http://localhost:5173';
 const b = await chromium.launch();
 const res = [];
@@ -14,7 +16,9 @@ await p.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y
 await p.waitForTimeout(1200);
 
 const ids = await p.$$eval('#about > section', (s) => s.map((x) => x.id).join());
-check('section order', ids === 'intro,leadership,partners,authorities,services,statement,clients,reach,testimonials', ids);
+const publishedCount = await db.testimonial.count({ where: { isPublished: true } });
+check('section order (testimonials only when some are published)', ids === 'intro,leadership,partners,authorities,services,statement,clients,reach' + (publishedCount ? ',testimonials' : ''), ids);
+check('no "Sample Testimonials – Demo Content" label', !/Sample Testimonials/i.test(await p.evaluate(() => document.body.innerText)));
 const text = await p.evaluate(() => document.body.innerText);
 check('no ORRO / old brand', !/orro|maison|nakheel|emaar|dewa|trakhees/i.test(text));
 for (const s of [
@@ -23,7 +27,7 @@ for (const s of [
   'Project Management and Coordination', 'Turnkey Interior Fit-Out Solutions',
   'Our Clients & Partners', 'We are proud to work with leading developers, brands, and industry partners.', 'Approved by:', 'Registered with:',
   'Authorities & Approvals', 'Our Services', 'Commercial Fit Out', 'Villa Projects', 'In-house Joinery',
-  'Our Clients', 'Reach Us', 'Sample Testimonials – Demo Content', 'EST. 2019',
+  'Our Clients', 'Reach Us', 'EST. 2019',
 ]) check(`text: ${s.slice(0, 48)}`, text.toLowerCase().includes(s.toLowerCase()));
 check('statement text', /we meet new people\s*every day,\s*coming with\s*new dreams and hopes\.\s*our effort is to\s*make them true\./i.test(text.replace(/\n/g, ' ')));
 
@@ -41,7 +45,7 @@ const g = await p.evaluate(() => {
   const lines = q('.page-lines span').length;
   const y = (id) => Math.round(box(document.getElementById(id)).top + scrollY);
   const rows = new Set(q('#clients .ab-logo').map((l) => Math.round(box(l).top))).size;
-  return { cols, cards, partners, clients, img: [Math.round(img.width), Math.round(img.height), Math.round(img.left)], copyLeft: Math.round(copy.left), same, lines, rows, mapSrc: document.querySelector('.ab-map iframe').src, order: ['intro', 'partners', 'authorities', 'services', 'statement', 'clients', 'reach', 'testimonials'].map(y) };
+  return { cols, cards, partners, clients, img: [Math.round(img.width), Math.round(img.height), Math.round(img.left)], copyLeft: Math.round(copy.left), same, lines, rows, mapSrc: document.querySelector('.ab-map iframe').src, order: ['intro', 'partners', 'authorities', 'services', 'statement', 'clients', 'reach', 'testimonials'].filter((id) => document.getElementById(id)).map(y) };
 });
 check(`services: 3 equal columns (${g.cards.join('/')})`, g.cols === 3 && g.cards.every((w) => Math.abs(w - g.cards[0]) < 2));
 check('partners: 6 white square cards', g.partners.length === 6 && g.partners.every(([w, h, bg]) => w === h && bg === 'rgb(255, 255, 255)'), JSON.stringify(g.partners[0]));
@@ -89,16 +93,26 @@ await p.waitForTimeout(1600);
 const op1 = await p.$eval('.ab-card', (e) => getComputedStyle(e).opacity);
 check(`scroll reveal fades in (${op0} -> ${op1})`, op0 === '0' && op1 === '1');
 
-// testimonial slider: dots + auto
+// testimonial slider: publish the 3 local draft testimonials just for this test, then restore them
+const drafts = await db.testimonial.findMany({ where: { isPublished: false }, select: { id: true }, orderBy: { sortOrder: 'asc' }, take: 3 });
+await db.testimonial.updateMany({ where: { id: { in: drafts.map((d) => d.id) } }, data: { isPublished: true } });
+try {
+await p.goto(base + '/about.html', { waitUntil: 'networkidle' });
+check('published testimonials appear without any admin redeploy', (await p.$$('#testimonials .ab-slide')).length === publishedCount + drafts.length);
 await p.evaluate(() => document.getElementById('testimonials').scrollIntoView());
 await p.waitForTimeout(800);
 await p.click('.ab-dots button:nth-child(2)');
 await p.waitForTimeout(1500);
 check('slider dot shows 2nd testimonial', await p.$eval('.ab-slide:nth-child(2)', (e) => e.classList.contains('is-active')));
 const t = await p.$$eval('.ab-slide', (s) => s.map((x) => x.querySelector('blockquote').textContent.length > 30));
-check('3 sample testimonials', t.length === 3 && t.every(Boolean));
+check('3 testimonials with text', t.length === 3 && t.every(Boolean));
 await p.waitForTimeout(7200);
 check('slider auto-advances', await p.$eval('.ab-slide:nth-child(3)', (e) => e.classList.contains('is-active')));
+} finally {
+  await db.testimonial.updateMany({ where: { id: { in: drafts.map((d) => d.id) } }, data: { isPublished: false } });
+}
+await p.goto(base + '/about.html', { waitUntil: 'networkidle' });
+check('unpublishing hides them again', (await p.$$('#testimonials .ab-slide')).length === publishedCount);
 
 // footer + header consistent
 check('footer present with LFT details', await p.$eval('footer', (f) => /info@lftinteriors\.com/.test(f.innerText) && /04 282 9773/.test(f.innerText) && /Ithraa Tower, Al Garhoud, Dubai, UAE/.test(f.innerText)));
@@ -120,6 +134,7 @@ for (const [name, w] of [['tablet', 820], ['mobile', 390]]) {
   await q.close();
 }
 await b.close();
+await db.$disconnect();
 const f = res.filter((r) => !r).length;
 console.log(f ? `${f} failed` : `All ${res.length} checks passed`);
 process.exitCode = f ? 1 : 0;

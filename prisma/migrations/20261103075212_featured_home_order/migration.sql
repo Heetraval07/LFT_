@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `project` ADD COLUMN `homeOrder` INTEGER NOT NULL DEFAULT 0;

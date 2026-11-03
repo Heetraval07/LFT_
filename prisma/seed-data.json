@@ -1,0 +1,844 @@
+{
+  "categories": [
+    "Beauty & Healthcare",
+    "Commercial",
+    "Downtown Lobby Renovations",
+    "Entertainment",
+    "F & B",
+    "Retail Space"
+  ],
+  "projects": [
+    {
+      "name": "Dopamine",
+      "slug": "dopamine-oasis-mall",
+      "client": "Dopamine Land",
+      "shortDescription": "Interior fit-out of Dopamine, an immersive experience venue at Oasis Mall, Dubai.",
+      "description": "A sequence of themed rooms, each with its own lighting, finishes and installations, built and coordinated by the LFT team from start to handover.",
+      "location": "Oasis Mall, Dubai",
+      "type": "Immersive Entertainment",
+      "designVision": "Dopamine at Oasis Mall, Dubai is a sequence of themed rooms, each with its own colour, lighting and installation, so visitors move from one experience to the next.",
+      "keyDetails": [
+        "Themed experience rooms",
+        "Coloured and neon lighting",
+        "Branded entrance tunnel",
+        "Cloud ceiling feature",
+        "Interactive installations",
+        "Soft-play and seating areas"
+      ],
+      "closing": "Dopamine reflects LFT Interior Design LLC's commitment to quality craftsmanship and to delivering every project in line with the client's brand identity.",
+      "isFeatured": true,
+      "homeOrder": 0,
+      "isPublished": true,
+      "sortOrder": 0,
+      "categories": [
+        "Entertainment"
+      ],
+      "images": [
+        {
+          "path": "/images/projects/dopamine-oasis-mall/05.jpg",
+          "sortOrder": 0,
+          "isCover": true,
+          "alt": "Dopamine — photo 1",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/03.jpg",
+          "sortOrder": 1,
+          "isCover": false,
+          "alt": "Dopamine — photo 2",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/01.jpg",
+          "sortOrder": 2,
+          "isCover": false,
+          "alt": "Dopamine — photo 3",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/06.jpg",
+          "sortOrder": 3,
+          "isCover": false,
+          "alt": "Dopamine — photo 4",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/08.jpg",
+          "sortOrder": 4,
+          "isCover": false,
+          "alt": "Dopamine — photo 5",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/16.jpg",
+          "sortOrder": 5,
+          "isCover": false,
+          "alt": "Dopamine — photo 6",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/12.jpg",
+          "sortOrder": 6,
+          "isCover": false,
+          "alt": "Dopamine — photo 7",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/15.jpg",
+          "sortOrder": 7,
+          "isCover": false,
+          "alt": "Dopamine — photo 8",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/13.jpg",
+          "sortOrder": 8,
+          "isCover": false,
+          "alt": "Dopamine — photo 9",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/07.jpg",
+          "sortOrder": 9,
+          "isCover": false,
+          "alt": "Dopamine — photo 10",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/14.jpg",
+          "sortOrder": 10,
+          "isCover": false,
+          "alt": "Dopamine — photo 11",
+          "width": 720,
+          "height": 1280
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/17.jpg",
+          "sortOrder": 11,
+          "isCover": false,
+          "alt": "Dopamine — photo 12",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/02.jpg",
+          "sortOrder": 12,
+          "isCover": false,
+          "alt": "Dopamine — photo 13",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/04.jpg",
+          "sortOrder": 13,
+          "isCover": false,
+          "alt": "Dopamine — photo 14",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/10.jpg",
+          "sortOrder": 14,
+          "isCover": false,
+          "alt": "Dopamine — photo 15",
+          "width": 1200,
+          "height": 1600
+        },
+        {
+          "path": "/images/projects/dopamine-oasis-mall/11.jpg",
+          "sortOrder": 15,
+          "isCover": false,
+          "alt": "Dopamine — photo 16",
+          "width": 1200,
+          "height": 1600
+        }
+      ]
+    },
+    {
+      "name": "Eyewa — Arabian Center",
+      "slug": "eyewa-arabian-center",
+      "client": "Eyewa",
+      "shortDescription": "Interior fit-out of the Eyewa eyewear store at Arabian Center, Dubai.",
+      "description": "Feature ceiling and lighting, display joinery and finishes delivered in line with the Eyewa brand identity.",
+      "location": "Arabian Center, Dubai",
+      "type": "Eyewear Retail",
+      "designVision": "Each Eyewa store follows the brand's identity: teal and coral finishes, a feature ceiling with linear lighting and bright, open display walls. At Arabian Center, Dubai this identity was adapted to the store's layout and shopfront, so customers can browse the full range easily.",
+      "keyDetails": [
+        "Illuminated shopfront and brand signage",
+        "Feature ceiling with linear lighting",
+        "Wall-mounted display joinery for frames",
+        "Central display units",
+        "Integrated digital screens",
+        "Finishes in the Eyewa colour palette"
+      ],
+      "closing": "Eyewa — Arabian Center reflects LFT Interior Design LLC's commitment to quality craftsmanship and to delivering every project in line with the client's brand identity.",
+      "isFeatured": true,
+      "homeOrder": 1,
+      "isPublished": true,
+      "sortOrder": 1,
+      "categories": [
+        "Retail Space"
+      ],
+      "images": [
+        {
+          "path": "/images/projects/eyewa-arabian-center/02.jpg",
+          "sortOrder": 0,
+          "isCover": true,
+          "alt": "Eyewa — Arabian Center — photo 1",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "path": "/images/projects/eyewa-arabian-center/01.jpg",
+          "sortOrder": 1,
+          "isCover": false,
+          "alt": "Eyewa — Arabian Center — photo 2",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "path": "/images/projects/eyewa-arabian-center/03.jpg",
+          "sortOrder": 2,
+          "isCover": false,
+          "alt": "Eyewa — Arabian Center — photo 3",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "path": "/images/projects/eyewa-arabian-center/04.jpg",
+          "sortOrder": 3,
+          "isCover": false,
+          "alt": "Eyewa — Arabian Center — photo 4",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "path": "/images/projects/eyewa-arabian-center/05.jpg",
+          "sortOrder": 4,
+          "isCover": false,
+          "alt": "Eyewa — Arabian Center — photo 5",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "path": "/images/projects/eyewa-arabian-center/06.jpg",
+          "sortOrder": 5,
+          "isCover": false,
+          "alt": "Eyewa — Arabian Center — photo 6",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "path": "/images/projects/eyewa-arabian-center/07.jpg",
+          "sortOrder": 6,
+          "isCover": false,
+          "alt": "Eyewa — Arabian Center — photo 7",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "path": "/images/projects/eyewa-arabian-center/08.jpg",
+          "sortOrder": 7,
+          "isCover": false,
+          "alt": "Eyewa — Arabian Center — photo 8",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "path": "/images/projects/eyewa-arabian-center/09.jpg",
+          "sortOrder": 8,
+          "isCover": false,
+          "alt": "Eyewa — Arabian Center — photo 9",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "path": "/images/projects/eyewa-arabian-center/10.jpg",
+          "sortOrder": 9,
+          "isCover": false,
+          "alt": "Eyewa — Arabian Center — photo 10",
+          "width": 720,
+          "height": 1280
+        }
+      ]
+    },
+    {
+      "name": "Eyewa — My City Centre Masdar",
+      "slug": "eyewa-masdar",
+      "client": "Eyewa",
+      "shortDescription": "Interior fit-out of the Eyewa eyewear store at My City Centre Masdar, Abu Dhabi.",
+      "description": "Feature ceiling and lighting, display joinery and finishes delivered in line with the Eyewa brand identity.",
+      "location": "My City Centre Masdar, Abu Dhabi",
+      "type": "Eyewear Retail",
+      "designVision": "Each Eyewa store follows the brand's identity: teal and coral finishes, a feature ceiling with linear lighting and bright, open display walls. At My City Centre Masdar, Abu Dhabi this identity was adapted to the store's layout and shopfront, so customers can browse the full range easily.",
+      "keyDetails": [
+        "Illuminated shopfront and brand signage",
+        "Feature ceiling with linear lighting",
+        "Wall-mounted display joinery for frames",
+        "Central display units",
+        "Integrated digital screens",
+        "Finishes in the Eyewa colour palette"
+      ],
+      "closing": "Eyewa — My City Centre Masdar reflects LFT Interior Design LLC's commitment to quality craftsmanship and to delivering every project in line with the client's brand identity.",
+      "isFeatured": true,
+      "homeOrder": 3,
+      "isPublished": true,
+      "sortOrder": 2,
+      "categories": [
+        "Retail Space"
+      ],
+      "images": [
+        {
+          "path": "/images/projects/eyewa-masdar/07.jpg",
+          "sortOrder": 0,
+          "isCover": true,
+          "alt": "Eyewa — My City Centre Masdar — photo 1",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/eyewa-masdar/01.jpg",
+          "sortOrder": 1,
+          "isCover": false,
+          "alt": "Eyewa — My City Centre Masdar — photo 2",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "path": "/images/projects/eyewa-masdar/09.jpg",
+          "sortOrder": 2,
+          "isCover": false,
+          "alt": "Eyewa — My City Centre Masdar — photo 3",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "path": "/images/projects/eyewa-masdar/11.jpg",
+          "sortOrder": 3,
+          "isCover": false,
+          "alt": "Eyewa — My City Centre Masdar — photo 4",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "path": "/images/projects/eyewa-masdar/04.jpg",
+          "sortOrder": 4,
+          "isCover": false,
+          "alt": "Eyewa — My City Centre Masdar — photo 5",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "path": "/images/projects/eyewa-masdar/02.jpg",
+          "sortOrder": 5,
+          "isCover": false,
+          "alt": "Eyewa — My City Centre Masdar — photo 6",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "path": "/images/projects/eyewa-masdar/03.jpg",
+          "sortOrder": 6,
+          "isCover": false,
+          "alt": "Eyewa — My City Centre Masdar — photo 7",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "path": "/images/projects/eyewa-masdar/05.jpg",
+          "sortOrder": 7,
+          "isCover": false,
+          "alt": "Eyewa — My City Centre Masdar — photo 8",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "path": "/images/projects/eyewa-masdar/06.jpg",
+          "sortOrder": 8,
+          "isCover": false,
+          "alt": "Eyewa — My City Centre Masdar — photo 9",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "path": "/images/projects/eyewa-masdar/08.jpg",
+          "sortOrder": 9,
+          "isCover": false,
+          "alt": "Eyewa — My City Centre Masdar — photo 10",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/eyewa-masdar/10.jpg",
+          "sortOrder": 10,
+          "isCover": false,
+          "alt": "Eyewa — My City Centre Masdar — photo 11",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "path": "/images/projects/eyewa-masdar/13.jpg",
+          "sortOrder": 11,
+          "isCover": false,
+          "alt": "Eyewa — My City Centre Masdar — photo 12",
+          "width": 960,
+          "height": 1280
+        }
+      ]
+    },
+    {
+      "name": "Jargee — Deerfield Mall",
+      "slug": "jargee-deerfield",
+      "client": "Jargee",
+      "shortDescription": "Interior fit-out of the Jargee store at Deerfield Mall.",
+      "description": "Shopfront, ceiling and lighting, display joinery and finishes delivered in line with the Jargee brand identity.",
+      "location": "Deerfield Mall, Dubai",
+      "type": "Retail Store",
+      "designVision": "The Jargee store at Deerfield Mall, Dubai is built around the brand's bold yellow identity, with a bright shopfront and well-lit shelving that puts the product range on display from the mall walkway.",
+      "keyDetails": [
+        "Branded yellow shopfront and signage",
+        "Linear ceiling lighting",
+        "Full-height product display shelving",
+        "Glass display cabinets",
+        "Feature product display wall"
+      ],
+      "closing": "Jargee — Deerfield Mall reflects LFT Interior Design LLC's commitment to quality craftsmanship and to delivering every project in line with the client's brand identity.",
+      "isFeatured": true,
+      "homeOrder": 2,
+      "isPublished": true,
+      "sortOrder": 3,
+      "categories": [
+        "Retail Space"
+      ],
+      "images": [
+        {
+          "path": "/images/projects/jargee-deerfield/05.jpg",
+          "sortOrder": 0,
+          "isCover": true,
+          "alt": "Jargee — Deerfield Mall — photo 1",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-deerfield/01.jpg",
+          "sortOrder": 1,
+          "isCover": false,
+          "alt": "Jargee — Deerfield Mall — photo 2",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-deerfield/08.jpg",
+          "sortOrder": 2,
+          "isCover": false,
+          "alt": "Jargee — Deerfield Mall — photo 3",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-deerfield/02.jpg",
+          "sortOrder": 3,
+          "isCover": false,
+          "alt": "Jargee — Deerfield Mall — photo 4",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-deerfield/03.jpg",
+          "sortOrder": 4,
+          "isCover": false,
+          "alt": "Jargee — Deerfield Mall — photo 5",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-deerfield/04.jpg",
+          "sortOrder": 5,
+          "isCover": false,
+          "alt": "Jargee — Deerfield Mall — photo 6",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-deerfield/06.jpg",
+          "sortOrder": 6,
+          "isCover": false,
+          "alt": "Jargee — Deerfield Mall — photo 7",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-deerfield/07.jpg",
+          "sortOrder": 7,
+          "isCover": false,
+          "alt": "Jargee — Deerfield Mall — photo 8",
+          "width": 960,
+          "height": 1280
+        },
+        {
+          "path": "/images/projects/jargee-deerfield/09.jpg",
+          "sortOrder": 8,
+          "isCover": false,
+          "alt": "Jargee — Deerfield Mall — photo 9",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-deerfield/10.jpg",
+          "sortOrder": 9,
+          "isCover": false,
+          "alt": "Jargee — Deerfield Mall — photo 10",
+          "width": 960,
+          "height": 1280
+        }
+      ]
+    },
+    {
+      "name": "Eyewa — Festival Plaza",
+      "slug": "eyewa-festival-plaza",
+      "client": "Eyewa",
+      "shortDescription": "Interior fit-out of the Eyewa eyewear store at Festival Plaza, Dubai.",
+      "description": "Feature ceiling and lighting, display joinery and finishes delivered in line with the Eyewa brand identity.",
+      "location": "Festival Plaza, Dubai",
+      "type": "Eyewear Retail",
+      "designVision": "Each Eyewa store follows the brand's identity: teal and coral finishes, a feature ceiling with linear lighting and bright, open display walls. At Festival Plaza, Dubai this identity was adapted to the store's layout and shopfront, so customers can browse the full range easily.",
+      "keyDetails": [
+        "Illuminated shopfront and brand signage",
+        "Feature ceiling with linear lighting",
+        "Wall-mounted display joinery for frames",
+        "Central display units",
+        "Integrated digital screens",
+        "Finishes in the Eyewa colour palette"
+      ],
+      "closing": "Eyewa — Festival Plaza reflects LFT Interior Design LLC's commitment to quality craftsmanship and to delivering every project in line with the client's brand identity.",
+      "isFeatured": true,
+      "homeOrder": 5,
+      "isPublished": true,
+      "sortOrder": 4,
+      "categories": [
+        "Retail Space"
+      ],
+      "images": [
+        {
+          "path": "/images/projects/eyewa-festival-plaza/03.jpg",
+          "sortOrder": 0,
+          "isCover": true,
+          "alt": "Eyewa — Festival Plaza — photo 1",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "path": "/images/projects/eyewa-festival-plaza/01.jpg",
+          "sortOrder": 1,
+          "isCover": false,
+          "alt": "Eyewa — Festival Plaza — photo 2",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "path": "/images/projects/eyewa-festival-plaza/04.jpg",
+          "sortOrder": 2,
+          "isCover": false,
+          "alt": "Eyewa — Festival Plaza — photo 3",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "path": "/images/projects/eyewa-festival-plaza/05.jpg",
+          "sortOrder": 3,
+          "isCover": false,
+          "alt": "Eyewa — Festival Plaza — photo 4",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "path": "/images/projects/eyewa-festival-plaza/06.jpg",
+          "sortOrder": 4,
+          "isCover": false,
+          "alt": "Eyewa — Festival Plaza — photo 5",
+          "width": 1600,
+          "height": 1200
+        },
+        {
+          "path": "/images/projects/eyewa-festival-plaza/02.jpg",
+          "sortOrder": 5,
+          "isCover": false,
+          "alt": "Eyewa — Festival Plaza — photo 6",
+          "width": 1200,
+          "height": 1600
+        }
+      ]
+    },
+    {
+      "name": "Jargee — Bawabat Al Sharq Mall",
+      "slug": "jargee-bawabat-al-sharq",
+      "client": "Jargee",
+      "shortDescription": "Interior fit-out of the Jargee store at Bawabat Al Sharq Mall, Abu Dhabi.",
+      "description": "Shopfront, ceiling and lighting, display joinery and finishes delivered in line with the Jargee brand identity.",
+      "location": "Bawabat Al Sharq Mall, Abu Dhabi",
+      "type": "Retail Store",
+      "designVision": "The Jargee store at Bawabat Al Sharq Mall, Abu Dhabi is built around the brand's bold yellow identity, with a bright shopfront and well-lit shelving that puts the product range on display from the mall walkway.",
+      "keyDetails": [
+        "Branded yellow shopfront and signage",
+        "Linear ceiling lighting",
+        "Full-height product display shelving",
+        "Glass display cabinets",
+        "Feature product display wall"
+      ],
+      "closing": "Jargee — Bawabat Al Sharq Mall reflects LFT Interior Design LLC's commitment to quality craftsmanship and to delivering every project in line with the client's brand identity.",
+      "isFeatured": true,
+      "homeOrder": 4,
+      "isPublished": true,
+      "sortOrder": 5,
+      "categories": [
+        "Retail Space"
+      ],
+      "images": [
+        {
+          "path": "/images/projects/jargee-bawabat-al-sharq/04.jpg",
+          "sortOrder": 0,
+          "isCover": true,
+          "alt": "Jargee — Bawabat Al Sharq Mall — photo 1",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-bawabat-al-sharq/01.jpg",
+          "sortOrder": 1,
+          "isCover": false,
+          "alt": "Jargee — Bawabat Al Sharq Mall — photo 2",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-bawabat-al-sharq/02.jpg",
+          "sortOrder": 2,
+          "isCover": false,
+          "alt": "Jargee — Bawabat Al Sharq Mall — photo 3",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-bawabat-al-sharq/03.jpg",
+          "sortOrder": 3,
+          "isCover": false,
+          "alt": "Jargee — Bawabat Al Sharq Mall — photo 4",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-bawabat-al-sharq/05.jpg",
+          "sortOrder": 4,
+          "isCover": false,
+          "alt": "Jargee — Bawabat Al Sharq Mall — photo 5",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-bawabat-al-sharq/06.jpg",
+          "sortOrder": 5,
+          "isCover": false,
+          "alt": "Jargee — Bawabat Al Sharq Mall — photo 6",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-bawabat-al-sharq/07.jpg",
+          "sortOrder": 6,
+          "isCover": false,
+          "alt": "Jargee — Bawabat Al Sharq Mall — photo 7",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-bawabat-al-sharq/08.jpg",
+          "sortOrder": 7,
+          "isCover": false,
+          "alt": "Jargee — Bawabat Al Sharq Mall — photo 8",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/jargee-bawabat-al-sharq/09.jpg",
+          "sortOrder": 8,
+          "isCover": false,
+          "alt": "Jargee — Bawabat Al Sharq Mall — photo 9",
+          "width": 1280,
+          "height": 960
+        }
+      ]
+    },
+    {
+      "name": "Eyewa — City Centre Al Barsha",
+      "slug": "eyewa-al-barsha",
+      "client": "Eyewa",
+      "shortDescription": "Interior fit-out of the Eyewa eyewear store at City Centre Al Barsha, Dubai.",
+      "description": "Feature ceiling and lighting, display joinery and finishes delivered in line with the Eyewa brand identity.",
+      "location": "City Centre Al Barsha, Dubai",
+      "type": "Eyewear Retail",
+      "designVision": "Each Eyewa store follows the brand's identity: teal and coral finishes, a feature ceiling with linear lighting and bright, open display walls. At City Centre Al Barsha, Dubai this identity was adapted to the store's layout and shopfront, so customers can browse the full range easily.",
+      "keyDetails": [
+        "Illuminated shopfront and brand signage",
+        "Feature ceiling with linear lighting",
+        "Wall-mounted display joinery for frames",
+        "Central display units",
+        "Integrated digital screens",
+        "Finishes in the Eyewa colour palette"
+      ],
+      "closing": "Eyewa — City Centre Al Barsha reflects LFT Interior Design LLC's commitment to quality craftsmanship and to delivering every project in line with the client's brand identity.",
+      "isFeatured": false,
+      "homeOrder": 0,
+      "isPublished": true,
+      "sortOrder": 6,
+      "categories": [
+        "Retail Space"
+      ],
+      "images": [
+        {
+          "path": "/images/projects/eyewa-al-barsha/01.jpg",
+          "sortOrder": 0,
+          "isCover": true,
+          "alt": "Eyewa — City Centre Al Barsha — photo 1",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/eyewa-al-barsha/04.jpg",
+          "sortOrder": 1,
+          "isCover": false,
+          "alt": "Eyewa — City Centre Al Barsha — photo 2",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/eyewa-al-barsha/05.jpg",
+          "sortOrder": 2,
+          "isCover": false,
+          "alt": "Eyewa — City Centre Al Barsha — photo 3",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/eyewa-al-barsha/06.jpg",
+          "sortOrder": 3,
+          "isCover": false,
+          "alt": "Eyewa — City Centre Al Barsha — photo 4",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/eyewa-al-barsha/07.jpg",
+          "sortOrder": 4,
+          "isCover": false,
+          "alt": "Eyewa — City Centre Al Barsha — photo 5",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/eyewa-al-barsha/02.jpg",
+          "sortOrder": 5,
+          "isCover": false,
+          "alt": "Eyewa — City Centre Al Barsha — photo 6",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/eyewa-al-barsha/03.jpg",
+          "sortOrder": 6,
+          "isCover": false,
+          "alt": "Eyewa — City Centre Al Barsha — photo 7",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/eyewa-al-barsha/08.jpg",
+          "sortOrder": 7,
+          "isCover": false,
+          "alt": "Eyewa — City Centre Al Barsha — photo 8",
+          "width": 1280,
+          "height": 960
+        }
+      ]
+    },
+    {
+      "name": "Eyewa — SSMC",
+      "slug": "eyewa-ssmc",
+      "client": "Eyewa",
+      "shortDescription": "Interior fit-out of the Eyewa eyewear store at Sheikh Shakhbout Medical City (SSMC), Abu Dhabi.",
+      "description": "Feature ceiling and lighting, display joinery and finishes delivered in line with the Eyewa brand identity.",
+      "location": "Sheikh Shakhbout Medical City (SSMC), Abu Dhabi",
+      "type": "Eyewear Retail",
+      "designVision": "Each Eyewa store follows the brand's identity: teal and coral finishes, a feature ceiling with linear lighting and bright, open display walls. At Sheikh Shakhbout Medical City (SSMC), Abu Dhabi this identity was adapted to the store's layout and shopfront, so customers can browse the full range easily.",
+      "keyDetails": [
+        "Illuminated shopfront and brand signage",
+        "Feature ceiling with linear lighting",
+        "Wall-mounted display joinery for frames",
+        "Central display units",
+        "Integrated digital screens",
+        "Finishes in the Eyewa colour palette"
+      ],
+      "closing": "Eyewa — SSMC reflects LFT Interior Design LLC's commitment to quality craftsmanship and to delivering every project in line with the client's brand identity.",
+      "isFeatured": false,
+      "homeOrder": 0,
+      "isPublished": true,
+      "sortOrder": 7,
+      "categories": [
+        "Retail Space",
+        "Beauty & Healthcare"
+      ],
+      "images": [
+        {
+          "path": "/images/projects/eyewa-ssmc/05.jpg",
+          "sortOrder": 0,
+          "isCover": true,
+          "alt": "Eyewa — SSMC — photo 1",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/eyewa-ssmc/02.jpg",
+          "sortOrder": 1,
+          "isCover": false,
+          "alt": "Eyewa — SSMC — photo 2",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/eyewa-ssmc/03.jpg",
+          "sortOrder": 2,
+          "isCover": false,
+          "alt": "Eyewa — SSMC — photo 3",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/eyewa-ssmc/04.jpg",
+          "sortOrder": 3,
+          "isCover": false,
+          "alt": "Eyewa — SSMC — photo 4",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "path": "/images/projects/eyewa-ssmc/01.jpg",
+          "sortOrder": 4,
+          "isCover": false,
+          "alt": "Eyewa — SSMC — photo 5",
+          "width": 1280,
+          "height": 960
+        }
+      ]
+    }
+  ],
+  "testimonials": []
+}
