@@ -36,4 +36,4 @@ desktop.ini
 
 # raw photos from the LFT team (the website uses the copies in public/images/projects/;
 # re-import with: node scripts/import-project-images.mjs)
-images/
+/images/
