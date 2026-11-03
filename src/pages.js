@@ -1,12 +1,12 @@
 import {
-  img, heroSlides, HERO_INTERVAL_MS, projects, brand,
+  img, heroSlides, HERO_INTERVAL_MS, projects,
   recentProjectSlugs, partners,
 } from './data.js';
-import { initLightbox } from './main.js';
 import { renderAbout } from './about.js';
 import { renderServicesPage } from './services.js';
 import { renderProjectsPage } from './projects.js';
 import { renderContact } from './contact.js';
+import { renderProjectDetail } from './project.js';
 
 const $ = (s, r = document) => r.querySelector(s);
 
@@ -105,60 +105,9 @@ function projectsPage() {
   renderProjectsPage();
 }
 
-/* ---------- Project detail ---------- */
+/* ---------- Project detail (shared template in project.js) ---------- */
 function projectDetail() {
-  const slug = new URLSearchParams(location.search).get('p');
-  const idx = projects.findIndex((p) => p.slug === slug);
-  const root = $('#project');
-  if (idx === -1) {
-    document.title = `Project not found — ${brand.name}`;
-    root.innerHTML = `
-      <section class="page-hero page-hero-plain"><div class="container">
-        <p class="eyebrow">404</p><h1 class="display">We couldn’t find that project.</h1>
-        <a class="btn" href="/projects.html">View all projects</a>
-      </div></section>`;
-    return;
-  }
-  const p = projects[idx];
-  const next = projects[(idx + 1) % projects.length];
-  const prev = projects[(idx - 1 + projects.length) % projects.length];
-  document.title = `${p.title} — ${brand.name}`;
-  const all = [p.cover, ...p.gallery];
-  root.innerHTML = `
-    <section class="project-hero" style="background-image:url(${img(p.cover)})">
-      <div class="container">
-        <a class="crumb" href="/projects.html?category=${p.category}">← ${p.category}</a>
-        <h1 class="display">${p.title}</h1>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container project-intro">
-        <dl class="project-meta" data-reveal>
-          <div><dt>Location</dt><dd>${p.location}</dd></div>
-          <div><dt>Year</dt><dd>${p.year}</dd></div>
-          <div><dt>Area</dt><dd>${p.area}</dd></div>
-          <div><dt>Category</dt><dd>${p.category}</dd></div>
-        </dl>
-        <div data-reveal style="--d:120ms">
-          <p class="lead">${p.intro}</p>
-          ${p.body.map((t) => `<p>${t}</p>`).join('')}
-        </div>
-      </div>
-    </section>
-    <section class="section section-tight">
-      <div class="container gallery">
-        ${all.map((id, i) => `
-          <a href="${img(id)}" class="gallery-item ${i === 0 ? 'is-wide' : ''}" data-full="${img(id)}" data-caption="${p.title} — image ${i + 1} of ${all.length}" data-reveal>
-            <img src="${img(id)}" alt="${p.title}, image ${i + 1}" loading="lazy">
-          </a>`).join('')}
-      </div>
-    </section>
-    <nav class="project-pager container" aria-label="More projects">
-      <a href="/project.html?p=${prev.slug}"><span>Previous</span>${prev.title}</a>
-      <a href="/projects.html" class="pager-all">All projects</a>
-      <a href="/project.html?p=${next.slug}" class="pager-next"><span>Next</span>${next.title}</a>
-    </nav>`;
-  initLightbox('.gallery-item');
+  renderProjectDetail();
 }
 
 /* ---------- Contact ---------- */

@@ -14,7 +14,7 @@ await p.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y
 await p.waitForTimeout(1200);
 
 const ids = await p.$$eval('#about > section', (s) => s.map((x) => x.id).join());
-check('section order', ids === 'intro,partners,authorities,services,statement,clients,reach,testimonials', ids);
+check('section order', ids === 'intro,leadership,partners,authorities,services,statement,clients,reach,testimonials', ids);
 const text = await p.evaluate(() => document.body.innerText);
 check('no ORRO / old brand', !/orro|maison|nakheel|emaar|dewa|trakhees/i.test(text));
 for (const s of [
@@ -45,7 +45,7 @@ const g = await p.evaluate(() => {
 });
 check(`services: 3 equal columns (${g.cards.join('/')})`, g.cols === 3 && g.cards.every((w) => Math.abs(w - g.cards[0]) < 2));
 check('partners: 6 white square cards', g.partners.length === 6 && g.partners.every(([w, h, bg]) => w === h && bg === 'rgb(255, 255, 255)'), JSON.stringify(g.partners[0]));
-check('clients: 5 cards in one row', g.clients === 5 && g.rows === 1);
+check('clients: 10 real brand-name cards in two rows of 5', g.clients === 10 && g.rows === 2);
 check('all logo cards square + equal', g.same);
 check(`photo left of copy (${g.img.join('x')}; copy at ${g.copyLeft})`, g.img[0] > 400 && g.img[2] < g.copyLeft && Math.abs(g.img[1] / g.img[0] - 743 / 453) < 0.05);
 check('7 divider lines on page', g.lines === 7);
@@ -53,8 +53,8 @@ check('map points at Ithraa Tower, Al Garhoud', /Ithraa(\+|%20)Tower/.test(g.map
 check('sections stack in increasing order', g.order.every((v, i) => i === 0 || v > g.order[i - 1]));
 
 // placeholders flagged
-check('placeholder notes visible', (text.match(/Demo placeholders/g) || []).length >= 2 && /Placeholder entries/.test(text) && (await p.$$('.ab-tag')).length === 5);
-check('placeholder logo cards labelled', (await p.$$('.ab-logo-ph[title="Placeholder logo"]')).length === 11);
+check('placeholder notes visible (partners/approvals only)', (text.match(/Demo placeholders/g) || []).length >= 1 && /Placeholder entries/.test(text) && (await p.$$('.ab-tag')).length === 5);
+check('placeholder logo cards labelled', (await p.$$('.ab-logo-ph[title="Placeholder logo"]')).length === 6 && (await p.$$('.ab-wordmark')).length === 10);
 
 // service cards link to real anchors
 const hrefs = await p.$$eval('.ab-card', (a) => a.map((x) => x.getAttribute('href')));
@@ -78,8 +78,8 @@ const after = await p.$eval('.ab-card h3', (e) => getComputedStyle(e).color);
 const arrowTf = await p.$eval('.ab-card .ab-arrow', (e) => getComputedStyle(e).transform);
 check('service hover: colour + arrow nudge', before !== after && arrowTf !== 'none', `${before} -> ${after}`);
 await p.click('.ab-card');
-await p.waitForURL(/services\.html#commercial/);
-check('service card navigates', p.url().includes('services.html#commercial'));
+await p.waitForURL(/services\.html#fit-out/);
+check('service card navigates', p.url().includes('services.html#fit-out'));
 
 // scroll reveal
 await p.goto(base + '/about.html', { waitUntil: 'networkidle' });

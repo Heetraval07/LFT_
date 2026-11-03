@@ -43,7 +43,7 @@ check('up button scrolls to top', (await p.evaluate(() => scrollY)) < 5);
 // project link
 await p.evaluate(() => document.querySelector('#recent-projects').scrollIntoView());
 await p.click('.recent-item >> nth=3'); await p.waitForLoadState('networkidle');
-check('tile opens detail page', p.url().includes('p=atelier-kitchen'));
+check('tile opens detail page', p.url().includes('p=eyewa-masdar'));
 check('no console errors', errs.length === 0);
 
 // Tablet + mobile

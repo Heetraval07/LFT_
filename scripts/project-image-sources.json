@@ -1,0 +1,330 @@
+{
+  "dopamine-oasis-mall": [
+    {
+      "name": "01.jpg",
+      "source": "Dopamine/04f90b64-f990-416a-b2b6-580804981eb8.jpg"
+    },
+    {
+      "name": "02.jpg",
+      "source": "Dopamine/0674de56-7398-427d-93e5-09a2e84be0b4.jpg"
+    },
+    {
+      "name": "03.jpg",
+      "source": "Dopamine/073adc1e-a679-4df2-b7e1-81ffb0db2882.jpg"
+    },
+    {
+      "name": "04.jpg",
+      "source": "Dopamine/271cb769-b637-499f-9b17-55ee3414a73c.jpg"
+    },
+    {
+      "name": "05.jpg",
+      "source": "Dopamine/2b40e87c-4a61-4c2b-b8ef-5d472227191e.jpg"
+    },
+    {
+      "name": "06.jpg",
+      "source": "Dopamine/3c638e93-cddc-4881-b042-17126e1e348d.jpg"
+    },
+    {
+      "name": "07.jpg",
+      "source": "Dopamine/3d3ec022-28bc-490f-9f75-a3c6f54a5884.jpg"
+    },
+    {
+      "name": "08.jpg",
+      "source": "Dopamine/3e31f9d8-4b94-419a-b110-e50b5d4b36f9.jpg"
+    },
+    {
+      "name": "09.jpg",
+      "source": "Dopamine/57406de6-c46b-4e97-8160-db6784f58eed.jpg"
+    },
+    {
+      "name": "10.jpg",
+      "source": "Dopamine/61cca06a-e3df-411d-ae4d-e3e311e5cf58.jpg"
+    },
+    {
+      "name": "11.jpg",
+      "source": "Dopamine/78039414-d325-420b-b043-f2e7d72c1952.jpg"
+    },
+    {
+      "name": "12.jpg",
+      "source": "Dopamine/83aa2b41-ebf3-415b-8c5e-cf1a7d0df9b3.jpg"
+    },
+    {
+      "name": "13.jpg",
+      "source": "Dopamine/8471334d-4285-48c7-855d-3219ed73f5a3.jpg"
+    },
+    {
+      "name": "14.jpg",
+      "source": "Dopamine/8ec5e490-2a9a-4bc8-b3c0-6802452894c5.jpg"
+    },
+    {
+      "name": "15.jpg",
+      "source": "Dopamine/984ee615-bab0-414c-b610-8d7441ed6a47.jpg"
+    },
+    {
+      "name": "16.jpg",
+      "source": "Dopamine/bf69e4b9-741a-4535-be8b-53456fd1716f.jpg"
+    },
+    {
+      "name": "17.jpg",
+      "source": "Dopamine/fc3329c3-cf51-4be9-851c-c7ef77b3353a.jpg"
+    }
+  ],
+  "eyewa-masdar": [
+    {
+      "name": "01.jpg",
+      "source": "Eyewa/Masdar/2f606b03-f972-49be-a733-7288420b81f5.jpg"
+    },
+    {
+      "name": "02.jpg",
+      "source": "Eyewa/Masdar/571e6859-0a7c-4812-be3f-192b65ba26f1.jpg"
+    },
+    {
+      "name": "03.jpg",
+      "source": "Eyewa/Masdar/5bf18b9e-5bb9-4969-beb4-9579fa9ae1ad.jpg"
+    },
+    {
+      "name": "04.jpg",
+      "source": "Eyewa/Masdar/5f939534-a288-41ac-9f5f-1c5d1be21d3d.jpg"
+    },
+    {
+      "name": "05.jpg",
+      "source": "Eyewa/Masdar/614afd98-2044-4aeb-a17f-3c3fd178aad5.jpg"
+    },
+    {
+      "name": "06.jpg",
+      "source": "Eyewa/Masdar/62354f2a-4ead-4917-bed7-70441ff27346.jpg"
+    },
+    {
+      "name": "07.jpg",
+      "source": "Eyewa/Masdar/66456b7e-71af-448e-938c-9e62ca7e38ce.jpg"
+    },
+    {
+      "name": "08.jpg",
+      "source": "Eyewa/Masdar/99134c80-0eb0-417e-a6a9-b32c89ebed2e.jpg"
+    },
+    {
+      "name": "09.jpg",
+      "source": "Eyewa/Masdar/b3c7455e-fea5-4af9-a218-07e514870b9a.jpg"
+    },
+    {
+      "name": "10.jpg",
+      "source": "Eyewa/Masdar/b6041b38-e880-4194-872d-20626f9da2b4.jpg"
+    },
+    {
+      "name": "11.jpg",
+      "source": "Eyewa/Masdar/bb834f3a-a6a5-468a-87ee-357469eebc7f.jpg"
+    },
+    {
+      "name": "12.jpg",
+      "source": "Eyewa/Masdar/eb680202-a7f5-4cca-ad79-d66c372d1f15.jpg"
+    },
+    {
+      "name": "13.jpg",
+      "source": "Eyewa/Masdar/faa3ecb4-d961-47a2-90c3-908d126de2c8.jpg"
+    }
+  ],
+  "eyewa-al-barsha": [
+    {
+      "name": "01.jpg",
+      "source": "Eyewa/Al Barsha/3f9b607b-ee6e-4835-9cc7-d821d65184c3.jpg"
+    },
+    {
+      "name": "02.jpg",
+      "source": "Eyewa/Al Barsha/48647c26-3a15-41ba-9061-434909f989c6.jpg"
+    },
+    {
+      "name": "03.jpg",
+      "source": "Eyewa/Al Barsha/8113887f-6ff9-4cd9-b9da-fb19182d34f3.jpg"
+    },
+    {
+      "name": "04.jpg",
+      "source": "Eyewa/Al Barsha/8cd8ef81-8b7e-4f1c-9df4-63020195af64.jpg"
+    },
+    {
+      "name": "05.jpg",
+      "source": "Eyewa/Al Barsha/ac26337c-99f3-4edf-92f1-0dc247d0334f.jpg"
+    },
+    {
+      "name": "06.jpg",
+      "source": "Eyewa/Al Barsha/ae3c2cee-bc82-4da7-b98f-233222f0250e.jpg"
+    },
+    {
+      "name": "07.jpg",
+      "source": "Eyewa/Al Barsha/c3dc1f0c-ba88-411e-bb4c-3a26e2de6ab7.jpg"
+    },
+    {
+      "name": "08.jpg",
+      "source": "Eyewa/Al Barsha/c94e5602-2966-4043-b329-4b655b9842a3.jpg"
+    }
+  ],
+  "eyewa-ssmc": [
+    {
+      "name": "01.jpg",
+      "source": "Eyewa/Medical city Abudhabi/0788cec2-4236-41ce-a484-d5d304f2a194.jpg"
+    },
+    {
+      "name": "02.jpg",
+      "source": "Eyewa/Medical city Abudhabi/6b86cb86-ff02-449e-aa61-d840ec33ab6d.jpg"
+    },
+    {
+      "name": "03.jpg",
+      "source": "Eyewa/Medical city Abudhabi/9f9a1c4f-0da1-44b1-8176-85b1ebbc53f7.jpg"
+    },
+    {
+      "name": "04.jpg",
+      "source": "Eyewa/Medical city Abudhabi/a39e36bf-cbe3-4cb9-8c5b-6a61c5798277.jpg"
+    },
+    {
+      "name": "05.jpg",
+      "source": "Eyewa/Medical city Abudhabi/c61b14dd-ef7b-4e76-9475-24f88239d280.jpg"
+    }
+  ],
+  "eyewa-festival-plaza": [
+    {
+      "name": "01.jpg",
+      "source": "Eyewa/Festival Plaza/WhatsApp Image 2026-09-22 at 12.47.38 PM (1).jpeg"
+    },
+    {
+      "name": "02.jpg",
+      "source": "Eyewa/Festival Plaza/WhatsApp Image 2026-09-22 at 12.47.38 PM.jpeg"
+    },
+    {
+      "name": "03.jpg",
+      "source": "Eyewa/Festival Plaza/WhatsApp Image 2026-09-22 at 12.47.39 PM (1).jpeg"
+    },
+    {
+      "name": "04.jpg",
+      "source": "Eyewa/Festival Plaza/WhatsApp Image 2026-09-22 at 12.47.39 PM (2).jpeg"
+    },
+    {
+      "name": "05.jpg",
+      "source": "Eyewa/Festival Plaza/WhatsApp Image 2026-09-22 at 12.47.39 PM.jpeg"
+    },
+    {
+      "name": "06.jpg",
+      "source": "Eyewa/Festival Plaza/WhatsApp Image 2026-09-22 at 12.47.40 PM.jpeg"
+    }
+  ],
+  "eyewa-arabian-center": [
+    {
+      "name": "01.jpg",
+      "source": "Eyewa/Arabian Center_/WhatsApp Image 2026-11-02 at 10.34.13.jpeg"
+    },
+    {
+      "name": "02.jpg",
+      "source": "Eyewa/Arabian Center_/WhatsApp Image 2026-11-02 at 10.34.14.jpeg"
+    },
+    {
+      "name": "03.jpg",
+      "source": "Eyewa/Arabian Center_/WhatsApp Image 2026-11-02 at 10.34.16.jpeg"
+    },
+    {
+      "name": "04.jpg",
+      "source": "Eyewa/Arabian Center_/WhatsApp Image 2026-11-02 at 10.34.18.jpeg"
+    },
+    {
+      "name": "05.jpg",
+      "source": "Eyewa/Arabian Center_/WhatsApp Image 2026-11-02 at 10.34.21.jpeg"
+    },
+    {
+      "name": "06.jpg",
+      "source": "Eyewa/Arabian Center_/WhatsApp Image 2026-11-02 at 10.34.26.jpeg"
+    },
+    {
+      "name": "07.jpg",
+      "source": "Eyewa/Arabian Center_/WhatsApp Image 2026-11-02 at 10.34.30.jpeg"
+    },
+    {
+      "name": "08.jpg",
+      "source": "Eyewa/Arabian Center_/WhatsApp Image 2026-11-02 at 10.34.35.jpeg"
+    },
+    {
+      "name": "09.jpg",
+      "source": "Eyewa/Arabian Center_/WhatsApp Image 2026-11-02 at 10.35.00.jpeg"
+    },
+    {
+      "name": "10.jpg",
+      "source": "Eyewa/Arabian Center_/WhatsApp Image 2026-11-02 at 10.35.02.jpeg"
+    }
+  ],
+  "jargee-deerfield": [
+    {
+      "name": "01.jpg",
+      "source": "Jargee/jargee deerfield/0f6403bd-d455-495f-9152-680f82ffd40f.jpg"
+    },
+    {
+      "name": "02.jpg",
+      "source": "Jargee/jargee deerfield/272cca30-fd80-4e09-ae0b-1a5820cb345f.jpg"
+    },
+    {
+      "name": "03.jpg",
+      "source": "Jargee/jargee deerfield/30c706db-1639-41af-91b5-6360b772a837.jpg"
+    },
+    {
+      "name": "04.jpg",
+      "source": "Jargee/jargee deerfield/50d696bc-b487-4ebd-a6d2-def70246311a.jpg"
+    },
+    {
+      "name": "05.jpg",
+      "source": "Jargee/jargee deerfield/5e7c14e8-c7f1-40ba-a0b9-3d1d5f74a902.jpg"
+    },
+    {
+      "name": "06.jpg",
+      "source": "Jargee/jargee deerfield/71b8171a-714d-4a80-8de7-03e9eeb8544a.jpg"
+    },
+    {
+      "name": "07.jpg",
+      "source": "Jargee/jargee deerfield/84354f52-23d4-47fa-b712-13f5ada6c6e8.jpg"
+    },
+    {
+      "name": "08.jpg",
+      "source": "Jargee/jargee deerfield/94605916-6be1-484d-a34b-95f80cd82e45.jpg"
+    },
+    {
+      "name": "09.jpg",
+      "source": "Jargee/jargee deerfield/964fc08f-4cf2-4c61-a88b-f46e8b270b56.jpg"
+    },
+    {
+      "name": "10.jpg",
+      "source": "Jargee/jargee deerfield/a89286d9-96d8-464c-bbe2-5d2f3ed12dcb.jpg"
+    }
+  ],
+  "jargee-bawabat-al-sharq": [
+    {
+      "name": "01.jpg",
+      "source": "Jargee/Jargee Sharq Mall/270fa435-4094-4feb-b536-9b7379795b9e.jpg"
+    },
+    {
+      "name": "02.jpg",
+      "source": "Jargee/Jargee Sharq Mall/46a6dc1f-8fa5-4da9-93c4-4d7a1516f40d.jpg"
+    },
+    {
+      "name": "03.jpg",
+      "source": "Jargee/Jargee Sharq Mall/4935ba11-3056-487f-904d-5bfae9f3c0f7.jpg"
+    },
+    {
+      "name": "04.jpg",
+      "source": "Jargee/Jargee Sharq Mall/5cda365b-5597-46dd-9b2d-cb546ce1ca06.jpg"
+    },
+    {
+      "name": "05.jpg",
+      "source": "Jargee/Jargee Sharq Mall/b744f5be-ba9a-47db-8ea7-8db34dca8ba5.jpg"
+    },
+    {
+      "name": "06.jpg",
+      "source": "Jargee/Jargee Sharq Mall/c5795d07-9b84-4a74-8d36-85028185dd39.jpg"
+    },
+    {
+      "name": "07.jpg",
+      "source": "Jargee/Jargee Sharq Mall/d6947ddb-a5f0-40ed-9356-ba84fe916fc8.jpg"
+    },
+    {
+      "name": "08.jpg",
+      "source": "Jargee/Jargee Sharq Mall/e8a8ddff-da2b-45bb-bcd0-088a00c4ac86.jpg"
+    },
+    {
+      "name": "09.jpg",
+      "source": "Jargee/Jargee Sharq Mall/fdbd37bd-6c54-47c6-9993-9ce2e584bfc4.jpg"
+    }
+  ]
+}

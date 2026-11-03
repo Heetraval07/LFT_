@@ -2,44 +2,32 @@
 
 export const servicesPage = {
   title: 'Our Services',
-  demoNote: 'Service list shown for demonstration — confirm each offering before publishing.',
-  // `id` is the anchor on the page (used by links on the About page); `contact` pre-selects the enquiry form.
+  // From the LFT company profile (Nov 2026). `id` is the anchor on the page (the About page links to some of them);
+  // `contact` pre-fills the enquiry form on the Contact page.
   items: [
     {
-      id: 'restaurant', title: 'Restaurant & F&B', contact: 'commercial',
-      text: 'From cosy cafés to full-service restaurants, we design layouts and finishes that support the guest experience and a smooth flow from kitchen to dining floor.',
+      id: 'design', title: 'Interior Design', contact: null,
+      text: 'Comprehensive interior design services. Our dedicated design team is the heart and soul of our ideas and our uniqueness in the industry.',
     },
     {
-      id: 'retail', title: 'Retail Fitout', contact: 'commercial',
-      text: 'Store interiors that present your brand clearly. Shopfront, displays, lighting and customer flow are planned together so the space sells.',
+      id: 'fit-out', title: 'Interior Fit-Out', contact: 'commercial',
+      text: "We ensure seamless integration and flawless execution. Our team manages everything from start to finish, aligning the work with your brand's identity.",
     },
     {
-      id: 'hospitality', title: 'Hospitality', contact: 'commercial',
-      text: 'Hotel lobbies, lounges and guest spaces designed for comfort, durability and a lasting first impression.',
+      id: 'ceiling-lighting', title: 'Ceiling & Lighting Solutions', contact: null,
+      text: 'Our team installs exquisite ceilings and captivating lighting solutions that create a perfect space design.',
     },
     {
-      id: 'kitchens', title: 'In-house Joinery', contact: 'kitchens',
-      text: 'We provide high-quality customised joinery solutions, delivering bespoke craftsmanship that enhances the beauty and functionality of every space.',
+      id: 'carpentry', title: 'Carpentry & Flooring', contact: 'kitchens',
+      text: 'Craftsmanship meets innovation with our adept carpentry and flooring services. We create distinct spaces that stand out from the crowd.',
     },
     {
-      id: 'mep', title: 'MEP Solutions', contact: 'commercial',
-      text: 'We coordinate mechanical, electrical and plumbing requirements with the design, so services, ceilings and finishes work together on site.',
+      id: 'wallpaper', title: 'Wallpaper Fixing', contact: null,
+      text: 'We transform blank walls into canvases of elegance and style, with a wide selection of wallpaper designs and prints.',
     },
     {
-      id: 'design-build', title: 'Design & Build', contact: null,
-      text: 'One team from concept to handover: design, documentation, project management and delivery under a single point of contact.',
-    },
-    {
-      id: 'residential', title: 'Villa Projects', contact: 'residential',
-      text: 'We specialise in crafting bespoke villa interiors that combine luxury, functionality, and timeless elegance. Our team works closely with clients to create personalised living spaces.',
-    },
-    {
-      id: 'commercial', title: 'Commercial Fit Out', contact: 'commercial',
-      text: 'We transform commercial spaces into dynamic environments that enhance brand identity, functionality, and customer experience, across offices, retail, restaurants and hotels.',
-    },
-    {
-      id: 'entertainment', title: 'Entertainment', contact: 'commercial',
-      text: 'Immersive interiors for entertainment venues, lounges and home theatres, where lighting, acoustics and atmosphere shape the experience.',
+      id: 'project-management', title: 'Project Management', contact: null,
+      text: 'Our management team constantly works towards the successful outcome of our projects while staying within budget and delivering on schedule.',
     },
   ],
 };
@@ -59,7 +47,7 @@ export const faq = {
   items: [
     {
       q: 'What types of projects do you take on?',
-      a: 'We work on residential and commercial interiors, including villas and apartments, offices, retail stores, restaurants, hospitality spaces and entertainment venues.',
+      a: 'Our completed projects include retail stores, restaurants and cafés, hospitality venues, salons and entertainment venues across Dubai, Abu Dhabi, Sharjah and Kuwait, as well as residential interiors.',
     },
     {
       q: 'Do you handle commercial fit-outs?',
@@ -83,7 +71,7 @@ export const faq = {
     },
     {
       q: 'How do you manage the project and contractors?',
-      a: 'Our project managers coordinate the design team, suppliers and contractors, run progress checks and keep you informed, so you have one point of contact from start to handover.',
+      a: 'Our project managers cover integration, scope, time, cost, resources, design, procurement, quality, safety, risk, change and communication management, as well as environment, health and safety, so the project stays within budget and on schedule with one point of contact from start to handover.',
     },
     {
       q: 'How do I get started?',
@@ -93,7 +81,7 @@ export const faq = {
 };
 
 export const highlights = [
-  { text: 'LFT Interior Design LLC delivers interior design, space planning and fit-out solutions across residential and commercial projects.', tag: 'Interior Design Services in Dubai' },
+  { text: 'Elevating Environments, Enriching Experiences. LFT Interior Design LLC delivers interior design and fit-out projects across the UAE.', tag: 'Interior Design Services in Dubai' },
   { text: 'From concept development to project management, one team stays with you from the first sketch to handover.', tag: 'From Design to Delivery' },
   { text: 'Customised furniture and joinery, made to suit the space and the people who use it.', tag: 'Bespoke Joinery & Furniture' },
 ];

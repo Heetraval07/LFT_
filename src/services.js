@@ -33,14 +33,13 @@ export function renderServicesPage() {
         <h1 class="sv-title" data-reveal>${sv.title}</h1>
         <div class="sv-grid">
           ${sv.items.map((s, i) => `
-            <a class="sv-card" id="${s.id}" href="/contact.html${s.contact ? `?service=${s.contact}` : ''}" data-reveal style="--d:${(i % 3) * 110}ms" aria-label="${s.title} — enquire">
+            <a class="sv-card" id="${s.id}" href="/contact.html?service=${s.id}" data-reveal style="--d:${(i % 3) * 110}ms" aria-label="${s.title} — enquire">
               <span class="sv-num">${String(i + 1).padStart(2, '0')}</span>
               <h2>${s.title}</h2>
               <p>${s.text}</p>
               <span class="sv-arrow">${ARROW}</span>
             </a>`).join('')}
         </div>
-        <p class="sv-demo">${sv.demoNote}</p>
       </section>
 
       <section class="sv-authorities" id="authorities" aria-label="${authoritiesBlock.title}">

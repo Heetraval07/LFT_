@@ -1,5 +1,5 @@
 import {
-  aboutPage, clientsPartners, authorities, aboutServices, statement, clients, reachUs, sampleTestimonials,
+  aboutPage, clientsPartners, authorities, aboutServices, statement, clients, leadership, reachUs, sampleTestimonials,
 } from './about-data.js';
 
 const CHECK = '<svg class="ab-check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg>';
@@ -16,8 +16,8 @@ const GLYPHS = [
 ];
 
 const logoCard = (item, i) => `
-  <li class="ab-logo">
-    ${item.src
+  <li class="ab-logo${item.text && !item.src ? ' ab-logo-text' : ''}">
+    ${item.text && !item.src ? `<span class="ab-wordmark">${item.name}</span>` : item.src
       ? `<img src="${item.src}" alt="${item.name}" loading="lazy">`
       : `<span class="ab-logo-ph" title="Placeholder logo">
            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">${GLYPHS[i % GLYPHS.length]}</svg>
@@ -51,10 +51,28 @@ export function renderAbout() {
             ${a.about.map((p) => `<p>${p}</p>`).join('')}
             <h2 class="ab-who">${a.whoWeAre.title}</h2>
             ${a.whoWeAre.text.map((p) => `<p>${p}</p>`).join('')}
+            <h3 class="ab-sub">${a.values.title}</h3>
+            <ul class="ab-checks ab-values">${a.values.items.map(([t, d]) => `<li>${CHECK}<span><b>${t}</b> — ${d}</span></li>`).join('')}</ul>
             <h3 class="ab-sub">${a.capabilities.title}</h3>
             <ul class="ab-checks">${a.capabilities.items.map((i) => `<li>${CHECK}<span>${i}</span></li>`).join('')}</ul>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="ab ab-alt ab-leaders" id="leadership">
+      <div class="ab-wrap">
+        <h2 class="ab-h2" data-reveal>${leadership.title}</h2>
+        <div class="ab-people">
+          ${leadership.people.map((p, i) => `
+            <article class="ab-person" data-reveal style="--d:${(i % 2) * 100}ms">
+              <h3>${p.name}</h3>
+              <p class="ab-role">${p.role}</p>
+              <p>${p.bio}</p>
+            </article>`).join('')}
+        </div>
+        <h3 class="ab-sub" data-reveal>${leadership.teamTitle}</h3>
+        <ul class="ab-team" data-reveal>${leadership.team.map(([n, r]) => `<li><b>${n}</b><span>${r}</span></li>`).join('')}</ul>
       </div>
     </section>
 
@@ -107,8 +125,7 @@ export function renderAbout() {
     <section class="ab ab-clients" id="clients">
       <div class="ab-wrap ab-center">
         <h2 class="ab-h2 ab-caps ab-bold" data-reveal>${cl.title}</h2>
-        <ul class="ab-logos ab-logos-5" data-reveal>${cl.items.map(logoCard).join('')}</ul>
-        <p class="ab-demo">${cl.demoNote}</p>
+        <ul class="ab-logos ab-logos-5 ab-logos-names" data-reveal>${cl.items.map(logoCard).join('')}</ul>
       </div>
     </section>
 

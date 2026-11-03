@@ -1387,3 +1387,154 @@ body.drawer-open .drawer.is-open { transform: none; visibility: visible; }
 [data-page="home"] .hdr-main .hdr-search svg { filter: drop-shadow(0 1px 5px rgba(0, 0, 0, 0.5)); }
 /* Same warm tan, a little lighter, so the active/hover link stays legible over bright photos (homepage hero navbar only) */
 [data-page="home"] .hdr-main { --hdr-active: #d9d2ae; }
+
+/* Projects page: list of other projects from the company profile */
+.pj-other-title { margin: 34px 0 14px; font: 700 15px 'Montserrat', var(--sans); color: #fff; }
+.pj-other { list-style: none; margin: 0; padding: 0; columns: 3; column-gap: 32px; }
+.pj-other li { break-inside: avoid; padding: 6px 0 6px 18px; position: relative; font: 400 14px/1.6 'Montserrat', var(--sans); color: #999; }
+.pj-other li::before { content: ''; position: absolute; left: 0; top: 15px; width: 8px; height: 1px; background: #a6a182; }
+@media (max-width: 900px) { .pj-other { columns: 2; } }
+@media (max-width: 600px) { .pj-other { columns: 1; } }
+
+/* Project detail gallery for real project photos: keep each photo's own proportions (portrait and landscape mix) */
+.gallery.gallery-natural { display: block; columns: 2; column-gap: clamp(12px, 2vw, 24px); }
+.gallery-natural .gallery-item { display: block; break-inside: avoid; margin-bottom: clamp(12px, 2vw, 24px); }
+.gallery-natural .gallery-item img,
+.gallery-natural .gallery-item:last-child:nth-child(even) img { height: auto; aspect-ratio: auto; }
+@media (max-width: 600px) { .gallery.gallery-natural { columns: 1; } }
+
+/* About: values, leadership, team and brand-name cards (content from the company profile) */
+.ab-values b { color: #fff; font-weight: 600; }
+.ab-values li { color: #a8a8a8; }
+.ab-leaders { padding-top: 90px; }
+.ab-people { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px 40px; margin-top: 34px; }
+.ab-person { border-top: 1px solid rgba(255, 255, 255, 0.14); padding-top: 22px; }
+.ab-person h3 { margin: 0; font: 700 22px/1.3 'Montserrat', var(--sans); color: #fff; }
+.ab-role { margin: 4px 0 12px; font: 600 12px 'Montserrat', var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: #a6a182; }
+.ab-person p:not(.ab-role) { margin: 0; font: 400 14px/1.75 'Montserrat', var(--sans); color: #a8a8a8; }
+.ab-leaders .ab-sub { margin-top: 48px; }
+.ab-team { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px 24px; }
+.ab-team li { display: flex; flex-direction: column; gap: 2px; padding-left: 14px; border-left: 1px solid #a6a182; }
+.ab-team b { font: 600 15px 'Montserrat', var(--sans); color: #fff; }
+.ab-team span { font: 400 13px 'Montserrat', var(--sans); color: #999; }
+.ab-logos-names { gap: 24px 42px; }
+.ab-logo-text { padding: 12px; }
+.ab-wordmark { font: 700 17px/1.25 'Montserrat', var(--sans); letter-spacing: 0.04em; text-transform: uppercase; color: #1b1b1b; text-align: center; }
+@media (max-width: 900px) {
+  .ab-people { grid-template-columns: 1fr; }
+  .ab-team { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) { .ab-wordmark { font-size: 14px; } }
+
+/* ---------- Project detail (shared template; dark, ORRO-style; scoped to .page-project / .pd-*) ---------- */
+.page-project { background: #1b1b1b; color: #fff; }
+#project { position: relative; overflow: hidden; font-family: 'Montserrat', var(--sans); }
+@media (min-width: 1200px) {
+  #project { padding-top: 147px; }
+  #project::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 147px; background: #0a0a0a; }
+}
+.pd-wrap { max-width: 1096px; margin: 0 auto; padding: 0 24px; position: relative; }
+@media (min-width: 1200px) { .pd-wrap { padding: 0; } }
+
+/* A · banner */
+.pd-banner { position: relative; min-height: 300px; display: flex; align-items: center; background: #222; overflow: hidden; }
+.pd-banner-bg { position: absolute; inset: 0; background-size: cover; background-position: center 45%; filter: grayscale(1) contrast(0.9); transform: scale(1.02); }
+.pd-banner::after { content: ''; position: absolute; inset: 0; background: rgba(18, 18, 18, 0.6); }
+.pd-banner-inner { z-index: 1; width: 100%; padding-top: 40px; padding-bottom: 40px; }
+.pd-banner h1 { margin: 0 0 18px; max-width: 760px; font: 500 44px/1.2 'Montserrat', var(--sans); color: #fff; letter-spacing: 0; animation: rise 1s var(--ease) both; }
+.pd-crumbs { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; font: 400 13px 'Montserrat', var(--sans); color: #fff; }
+.pd-crumbs a { transition: color 0.3s; }
+.pd-crumbs a:hover { color: #a6a182; }
+.pd-crumbs [aria-current] { color: #a6a182; }
+
+.pd-main { position: relative; padding: 112px 0 150px; }
+
+/* B · slider */
+.pd-slider { position: relative; aspect-ratio: 1.6; background: #111; overflow: hidden; outline: none; }
+.pd-slider:focus-visible { box-shadow: 0 0 0 2px #a6a182; }
+.pd-slide { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 0.8s ease; }
+.pd-slide.is-active { opacity: 1; z-index: 1; }
+.pd-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pd-arrow {
+  position: absolute; top: 50%; z-index: 2; width: 44px; height: 44px; margin-top: -22px; display: grid; place-items: center;
+  background: rgba(255, 255, 255, 0.72); color: #1b1b1b; transition: background 0.3s, color 0.3s;
+}
+.pd-arrow svg { width: 20px; height: 20px; }
+.pd-arrow:hover { background: #fff; color: #000; }
+.pd-prev { left: 0; }
+.pd-next { right: 0; }
+.pd-count { position: absolute; right: 18px; bottom: 14px; z-index: 2; margin: 0; padding: 4px 10px; background: rgba(0, 0, 0, 0.45); font: 500 12px 'Montserrat', var(--sans); letter-spacing: 0.08em; color: #ddd; }
+.pd-count b { color: #fff; }
+
+/* C/D · information + design vision */
+.pd-info { display: grid; grid-template-columns: 270px 1fr; gap: 56px; margin-top: 54px; }
+.pd-label { position: relative; margin: 0 0 30px; padding-bottom: 12px; font: 700 13px 'Montserrat', var(--sans); letter-spacing: 0.04em; text-transform: uppercase; color: #fff; }
+.pd-label::after { content: ''; position: absolute; left: 0; bottom: 0; width: 22px; height: 1px; background: #a6a182; }
+.pd-facts dl { margin: 0; display: grid; gap: 10px; }
+.pd-facts dl div { font: 400 13px/1.6 'Montserrat', var(--sans); color: #bbb; }
+.pd-facts dt { display: inline; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.02em; }
+.pd-facts dd { display: inline; margin: 0 0 0 4px; }
+.pd-title { margin: 0 0 18px; font: 500 26px/1.3 'Montserrat', var(--sans); color: #fff; }
+.pd-copy p { margin: 0 0 16px; font: 400 14px/1.8 'Montserrat', var(--sans); color: #9a9a9a; }
+.pd-sub { position: relative; margin: 46px 0 24px; padding-bottom: 10px; font: 700 14px 'Montserrat', var(--sans); color: #fff; }
+.pd-sub::after { content: ''; position: absolute; left: 0; bottom: 0; width: 46px; height: 1px; background: rgba(255, 255, 255, 0.4); }
+.pd-copy .pd-kicker { margin-bottom: 10px; font-weight: 600; font-size: 12px; color: #a6a182; }
+.pd-list { list-style: none; margin: 18px 0 24px; padding: 0 0 0 28px; display: grid; gap: 10px; }
+.pd-list li { display: flex; align-items: center; gap: 14px; font: 400 14px/1.5 'Montserrat', var(--sans); color: #9a9a9a; }
+.pd-check { flex: none; width: 20px; height: 13px; color: #a6a182; }
+
+/* E · gallery: 3 per row, last row centred (a project with fewer photos keeps the same look) */
+.pd-gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 46px 1.5% 0; }
+.pd-shot { position: relative; flex: 0 0 calc((100% - 16px) / 3); aspect-ratio: 1.68; overflow: hidden; background: #111; cursor: zoom-in; }
+.pd-shot img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.9s var(--ease); }
+.pd-shot::after { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, 0); transition: background 0.4s; }
+.pd-shot:hover img { transform: scale(1.04); }
+.pd-shot:hover::after { background: rgba(0, 0, 0, 0.15); }
+
+/* F · project navigation */
+.pd-pager { display: flex; align-items: center; justify-content: space-between; margin: 96px 0 0; }
+.pd-circle { display: grid; place-items: center; width: 46px; height: 46px; border: 1px solid rgba(255, 255, 255, 0.8); border-radius: 50%; color: #fff; transition: background 0.35s var(--ease), color 0.35s, border-color 0.35s, transform 0.35s var(--ease); }
+.pd-circle svg { width: 18px; height: 18px; }
+.pd-circle:hover { background: #fff; color: #1b1b1b; }
+.pd-pager .pd-circle:first-child:hover { transform: translateX(-3px); }
+.pd-pager .pd-circle:last-child:hover { transform: translateX(3px); }
+.pd-grid-link { display: grid; place-items: center; width: 44px; height: 44px; color: #ccc; transition: color 0.3s, transform 0.3s var(--ease); }
+.pd-grid-link svg { width: 20px; height: 20px; }
+.pd-grid-link:hover { color: #a6a182; transform: scale(1.08); }
+
+/* G · related projects */
+.pd-related { margin-top: 74px; }
+.pd-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+.pd-card { display: block; }
+.pd-card-media { display: block; aspect-ratio: 1.15; overflow: hidden; background: #111; }
+.pd-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.9s var(--ease); }
+.pd-card:hover .pd-card-media img { transform: scale(1.05); }
+.pd-card-title { display: block; margin-top: 14px; font: 700 13px/1.4 'Montserrat', var(--sans); color: #fff; transition: color 0.3s; }
+.pd-card:hover .pd-card-title { color: #a6a182; }
+
+.pd-empty { padding: 20px 0 40px; text-align: center; }
+.pd-empty p { font: 400 16px 'Montserrat', var(--sans); color: #aaa; }
+.pd-btn { display: inline-block; margin-top: 18px; padding: 14px 28px; background: #fff; color: #000; font: 700 11px 'Montserrat', var(--sans); letter-spacing: 0.08em; text-transform: uppercase; transition: background 0.3s, color 0.3s; }
+.pd-btn:hover { background: #a6a182; color: #fff; }
+
+@media (max-width: 1199.98px) { .pd-banner { min-height: 240px; } }
+@media (max-width: 900px) {
+  .pd-banner { min-height: 210px; }
+  .pd-banner h1 { font-size: 32px; }
+  .pd-main { padding: 56px 0 90px; }
+  .pd-info { grid-template-columns: 1fr; gap: 36px; margin-top: 40px; }
+  .pd-shot { flex-basis: calc((100% - 8px) / 2); }
+  .pd-gallery { margin: 36px 0 0; }
+  .pd-pager { margin-top: 64px; }
+  .pd-related-grid { gap: 16px; }
+  .page-project .page-lines span:nth-child(even) { display: none; }
+}
+@media (max-width: 600px) {
+  .pd-banner h1 { font-size: 27px; }
+  .pd-slider { aspect-ratio: 4 / 3; }
+  .pd-arrow { width: 38px; height: 38px; margin-top: -19px; }
+  .pd-list { padding-left: 0; }
+  .pd-shot { flex-basis: 100%; }
+  .pd-related-grid { grid-template-columns: 1fr; gap: 28px; }
+  .pd-card-media { aspect-ratio: 1.5; }
+}

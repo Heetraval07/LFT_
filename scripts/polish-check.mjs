@@ -5,7 +5,7 @@ const b = await chromium.launch();
 const res = [];
 const check = (n, ok, x = '') => { res.push(ok); console.log(`${ok ? 'PASS' : 'FAIL'} ${n} ${x}`); };
 const RATIO = 516 / 390;
-const pages = ['/', '/about.html', '/services.html', '/projects.html', '/project.html?p=linden-house', '/contact.html', '/terms.html', '/privacy.html'];
+const pages = ['/', '/about.html', '/services.html', '/projects.html', '/project.html?p=dopamine-oasis-mall', '/contact.html', '/terms.html', '/privacy.html'];
 const errs = [];
 
 async function open(page, url) {

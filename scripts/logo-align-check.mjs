@@ -4,7 +4,7 @@ import { chromium } from 'playwright';
 const base = process.env.BASE_URL || 'http://localhost:5173';
 const mode = process.argv[2] || 'check';
 const widths = [360, 390, 600, 601, 820, 1024, 1100, 1101, 1199, 1200, 1230, 1280, 1366, 1440, 1536, 1920, 2560];
-const pages = ['/', '/about.html', '/services.html', '/projects.html', '/project.html?p=linden-house', '/contact.html', '/terms.html', '/privacy.html'];
+const pages = ['/', '/about.html', '/services.html', '/projects.html', '/project.html?p=dopamine-oasis-mall', '/contact.html', '/terms.html', '/privacy.html'];
 const res = [];
 const check = (n, ok, x = '') => { res.push(ok); console.log(`${ok ? 'PASS' : 'FAIL'} ${n} ${x}`); };
 

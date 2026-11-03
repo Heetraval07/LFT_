@@ -4,7 +4,7 @@ import { chromium } from 'playwright';
 import { mkdirSync } from 'node:fs';
 
 const base = process.env.BASE_URL || 'http://localhost:5173';
-const pages = ['/', '/about.html', '/services.html', '/projects.html', '/project.html?p=linden-house', '/contact.html'];
+const pages = ['/', '/about.html', '/services.html', '/projects.html', '/project.html?p=dopamine-oasis-mall', '/contact.html'];
 const viewports = { desktop: { width: 1440, height: 900 }, mobile: { width: 390, height: 844 } };
 mkdirSync('screenshots', { recursive: true });
 

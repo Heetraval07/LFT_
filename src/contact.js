@@ -1,4 +1,5 @@
 import { brand, services } from './data.js';
+import { servicesPage } from './services-data.js';
 
 const ADDRESS_QUERY = 'Ithraa Tower, Al Garhoud, Dubai, UAE';
 const MAP_SRC = `https://maps.google.com/maps?q=${encodeURIComponent(ADDRESS_QUERY)}&z=16&output=embed`;
@@ -87,7 +88,7 @@ export function renderContact() {
 
   // Arriving from a service card on the Services page: start the message with that service.
   const wanted = new URLSearchParams(location.search).get('service');
-  const match = services.find((s) => s.slug === wanted);
+  const match = servicesPage.items.find((s) => s.id === wanted) || services.find((s) => s.slug === wanted);
   if (match) form.elements.message.value = `I would like to enquire about ${match.title}.\n`;
 
   const showStatus = (kind, html) => {

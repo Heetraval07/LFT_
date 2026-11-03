@@ -38,10 +38,10 @@ const m = await p.evaluate(() => {
   };
 });
 check(`title 48px bold white centred (y=${m.titleTop}; ref 378)`, m.titleFs === '48px' && m.titleFw === '700' && m.titleCol === 'rgb(255, 255, 255)' && m.titleTa === 'center' && near(m.titleTop, 378, 12));
-check('9 services in 3 columns x 3 rows', m.n === 9 && m.rows === 3 && m.cards.length === 3);
+check('6 services in 3 columns x 2 rows', m.n === 6 && m.rows === 2 && m.cards.length === 3);
 check(`columns at x=135/535/935, 370 wide (${JSON.stringify(m.cards)})`, m.cards.every(([x, w], i) => near(x, 135 + i * 400, 2) && near(w, 370, 2)));
 check(`number 20px/600 tan; title 24px/600; text 15px (${m.num}|${m.h2}|${m.p})`, m.num[0] === '20px' && m.num[1] === '600' && m.num[2] === 'rgb(166, 161, 130)' && m.h2[0] === '24px' && m.h2[1] === '600' && m.p[0] === '15px');
-check('service names', m.titles.join('|') === 'Restaurant & F&B|Retail Fitout|Hospitality|In-house Joinery|MEP Solutions|Design & Build|Villa Projects|Commercial Fit Out|Entertainment', m.titles.join('|'));
+check('service names', m.titles.join('|') === 'Interior Design|Interior Fit-Out|Ceiling & Lighting Solutions|Carpentry & Flooring|Wallpaper Fixing|Project Management', m.titles.join('|'));
 check('7 white authority cards, 143x94, one row', m.auth.length === 7 && m.auth.every(([w, h, bg]) => w === 143 && h === 94 && bg === 'rgb(255, 255, 255)') && new Set(m.auth.map((a) => a[3])).size === 1, JSON.stringify(m.auth[0]));
 check(`charcoal container #222, centred (${m.boxW}w @ ${m.boxCenter})`, m.boxBg === 'rgb(34, 34, 34)' && near(m.boxCenter, 720, 2) && m.h2auth === '700');
 check('page bg #1b1b1b + 7 divider lines', m.bodyBg === 'rgb(27, 27, 27)' && m.lines === 7);
@@ -59,12 +59,12 @@ check('card hover tints title + moves arrow', c0 !== c1 && (await p.$eval('.sv-c
 // card links -> contact with service preselected
 const links = await p.$$eval('.sv-card', (a) => a.map((x) => x.getAttribute('href')));
 check('all card links point to the contact page', links.every((h) => h.startsWith('/contact.html')), links.join(' '));
-await p.click('#kitchens');
-await p.waitForURL(/contact\.html\?service=kitchens/);
-check('joinery card -> contact (message pre-filled with Kitchens & Joinery)', (await p.inputValue('#f-message')).includes('Kitchens & Joinery'));
+await p.click('#carpentry');
+await p.waitForURL(/contact\.html\?service=carpentry/);
+check('carpentry card -> contact (message pre-filled with Carpentry & Flooring)', (await p.inputValue('#f-message')).includes('Carpentry & Flooring'));
 
 // anchors used by the About page still resolve
-for (const id of ['commercial', 'residential', 'kitchens']) {
+for (const id of ['fit-out', 'design', 'carpentry']) {
   await p.goto(base + '/services.html#' + id, { waitUntil: 'networkidle' });
   await p.waitForTimeout(900);
   const top = await p.$eval('#' + id, (e) => Math.round(e.getBoundingClientRect().top));

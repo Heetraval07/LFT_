@@ -4,7 +4,7 @@ const base = process.env.BASE_URL || 'http://localhost:5173';
 const b = await chromium.launch();
 const res = [];
 const check = (n, ok, x = '') => { res.push(ok); console.log(`${ok ? 'PASS' : 'FAIL'} ${n} ${x}`); };
-const pages = ['/', '/about.html', '/services.html', '/projects.html', '/project.html?p=linden-house', '/contact.html', '/terms.html', '/privacy.html'];
+const pages = ['/', '/about.html', '/services.html', '/projects.html', '/project.html?p=dopamine-oasis-mall', '/contact.html', '/terms.html', '/privacy.html'];
 
 // ---- branding + contact consistency on every page (desktop) ----
 const p = await b.newPage({ viewport: { width: 1440, height: 900 } });

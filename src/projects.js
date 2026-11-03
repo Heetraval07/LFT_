@@ -1,4 +1,4 @@
-import { projects, img } from './data.js';
+import { projects, otherProjects, img } from './data.js';
 import { projectTabs, projectTags, legacyCategory, perPage as DEFAULT_PER_PAGE, projectsIntro } from './projects-data.js';
 
 const tagsOf = (p) => projectTags[p.slug] || [];
@@ -38,6 +38,8 @@ export function renderProjectsPage() {
         <div class="pj-about" data-reveal>
           <h2>${intro.heading}</h2>
           ${intro.paragraphs.map((t) => `<p>${t}</p>`).join('')}
+          <h3 class="pj-other-title">${intro.otherTitle}</h3>
+          <ul class="pj-other">${otherProjects.map((n) => `<li>${n}</li>`).join('')}</ul>
         </div>
       </div>
     </section>`;
@@ -49,7 +51,7 @@ export function renderProjectsPage() {
   const note = root.querySelector('#pj-note');
 
   const matches = (p) => {
-    if (q) return `${p.title} ${p.category} ${p.location} ${p.year} ${tagsOf(p).join(' ')}`.toLowerCase().includes(q);
+    if (q) return `${p.title} ${p.client || ''} ${p.category} ${p.location} ${tagsOf(p).join(' ')}`.toLowerCase().includes(q);
     return cat === 'All' || tagsOf(p).includes(cat);
   };
   const countFor = (tab) => (tab === 'All' ? projects.length : projects.filter((p) => tagsOf(p).includes(tab)).length);
